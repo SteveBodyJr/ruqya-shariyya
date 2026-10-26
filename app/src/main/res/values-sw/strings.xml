@@ -128,6 +128,14 @@
     <string name="learn_more">Soma zaidi</string>
     <string name="start">Anza</string>
 
+    <string name="widget_name">Adhkar zinazofuata</string>
+    <string name="widget_desc">Muda uliobaki hadi adhkar zako zinazofuata, na ratiba ya leo</string>
+    <string name="widget_next">Zinazofuata</string>
+    <string name="tile_bedtime">Kulala</string>
+
+    <string name="widget_add">Weka widget kwenye skrini ya nyumbani</string>
+    <string name="widget_add_hint">Inaonyesha adhkar zinazofuata na muda uliobaki</string>
+
     <!-- Settings -->
     <string name="reading">Usomaji</string>
     <string name="language">Lugha</string>

@@ -2,6 +2,7 @@ package com.digitalbeavertz.ruqya
 
 import android.app.Application
 import android.content.Context
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import com.digitalbeavertz.ruqya.audio.Audio
@@ -10,6 +11,7 @@ import com.digitalbeavertz.ruqya.data.Content
 import com.digitalbeavertz.ruqya.data.Lang
 import com.digitalbeavertz.ruqya.data.Prefs
 import com.digitalbeavertz.ruqya.notify.Reminders
+import java.util.Locale
 
 /** Everything the app shares, created once. */
 class AppContainer(context: Context) {
@@ -42,6 +44,13 @@ class RuqyaApp : Application() {
         /** Applies the app language (Android 13+ also shows it in the system's per-app language setting). */
         fun applyLanguage(lang: Lang) {
             AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(lang.tag))
+        }
+
+        /** A context in the app language, for text built outside an activity (notifications, the widget). */
+        fun localized(context: Context): Context {
+            val lang = (context.applicationContext as RuqyaApp).container.prefs.lang
+            val config = Configuration(context.resources.configuration).apply { setLocale(Locale(lang.tag)) }
+            return context.createConfigurationContext(config)
         }
     }
 }

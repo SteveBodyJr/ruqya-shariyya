@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A routine pill when that routine is done today: flat gold. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="#D4A72C" />
+    <corners android:radius="50dp" />
+</shape>

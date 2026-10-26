@@ -130,6 +130,14 @@
     <string name="learn_more">Learn more</string>
     <string name="start">Start</string>
 
+    <string name="widget_name">Next adhkar</string>
+    <string name="widget_desc">The time left until your next adhkar, and today\'s routines</string>
+    <string name="widget_next">Next</string>
+    <string name="tile_bedtime">Sleep</string>
+
+    <string name="widget_add">Add the widget to your home screen</string>
+    <string name="widget_add_hint">Shows the next adhkar and the time left</string>
+
     <!-- Settings -->
     <string name="reading">Reading</string>
     <string name="language">Language</string>

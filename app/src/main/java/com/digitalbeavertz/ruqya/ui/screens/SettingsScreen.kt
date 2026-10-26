@@ -2,6 +2,8 @@ package com.digitalbeavertz.ruqya.ui.screens
 
 import android.Manifest
 import android.app.TimePickerDialog
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -48,6 +50,7 @@ import com.digitalbeavertz.ruqya.data.Routine
 import com.digitalbeavertz.ruqya.data.ThemeMode
 import com.digitalbeavertz.ruqya.data.Translation
 import com.digitalbeavertz.ruqya.notify.Reminders
+import com.digitalbeavertz.ruqya.widget.NextAdhkarWidget
 import com.digitalbeavertz.ruqya.ui.components.ArabicText
 import com.digitalbeavertz.ruqya.ui.components.AyahArabic
 import com.digitalbeavertz.ruqya.ui.components.Header
@@ -164,6 +167,14 @@ fun SettingsScreen(nav: NavHostController) {
                 Row2(stringResource(R.string.theme), stringResource(themeLabel(p.theme))) { dialog = "theme" }
                 Divider()
                 SwitchRow(stringResource(R.string.keep_screen_on), stringResource(R.string.keep_screen_on_hint), p.keepScreenOn) { p.keepScreenOn = it }
+                val widgets = AppWidgetManager.getInstance(context)
+                if (widgets.isRequestPinAppWidgetSupported) {
+                    Divider()
+                    // Asks the launcher to place the widget, instead of searching its widget list.
+                    Row2(stringResource(R.string.widget_add), stringResource(R.string.widget_add_hint)) {
+                        widgets.requestPinAppWidget(ComponentName(context, NextAdhkarWidget::class.java), null, null)
+                    }
+                }
             }
             Spacer(Modifier.height(16.dp))
             RCard(padding = 0.dp) {

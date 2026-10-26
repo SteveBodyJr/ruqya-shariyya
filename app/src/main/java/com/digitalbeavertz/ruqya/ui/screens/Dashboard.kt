@@ -20,6 +20,10 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.statusBars
+import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowForward
@@ -100,7 +104,9 @@ fun HomeScreen(nav: NavHostController) {
     val today = now.toLocalDate()
     val inRow = streak(p.activeDays, today)
 
-    LazyColumn(Modifier.fillMaxSize(), contentPadding = PaddingValues(bottom = BottomBarSpace)) {
+    val list = rememberLazyListState()
+    Box(Modifier.fillMaxSize()) {
+    LazyColumn(Modifier.fillMaxSize(), state = list, contentPadding = PaddingValues(bottom = BottomBarSpace)) {
         item { HomeHeader(nav, now) }
 
         item {
@@ -174,6 +180,11 @@ fun HomeScreen(nav: NavHostController) {
                 }
             }
         }
+    }
+    // Once the green header has scrolled away, keep the white status-bar icons on green.
+    if (list.firstVisibleItemIndex > 0) {
+        Box(Modifier.fillMaxWidth().windowInsetsTopHeight(WindowInsets.statusBars).background(c.header))
+    }
     }
 }
 

@@ -13,6 +13,7 @@ import androidx.compose.runtime.setValue
 import com.digitalbeavertz.ruqya.ui.AppRoot
 import com.digitalbeavertz.ruqya.ui.components.LocalContainer
 import com.digitalbeavertz.ruqya.ui.theme.RuqyaTheme
+import com.digitalbeavertz.ruqya.widget.NextAdhkarWidget
 
 /** AppCompat only for the per-app language (English / Kiswahili); everything on screen is Compose. */
 class MainActivity : AppCompatActivity() {
@@ -35,6 +36,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        NextAdhkarWidget.update(this)
     }
 
     override fun onNewIntent(intent: Intent) {

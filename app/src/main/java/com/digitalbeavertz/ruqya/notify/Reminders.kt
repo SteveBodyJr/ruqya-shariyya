@@ -9,7 +9,6 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.res.Configuration
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
@@ -18,8 +17,8 @@ import com.digitalbeavertz.ruqya.R
 import com.digitalbeavertz.ruqya.RuqyaApp
 import com.digitalbeavertz.ruqya.core.nextReminder
 import com.digitalbeavertz.ruqya.data.Routine
+import com.digitalbeavertz.ruqya.widget.NextAdhkarWidget
 import java.time.ZonedDateTime
-import java.util.Locale
 
 /**
  * Daily reminders for the morning, evening and bedtime routines. One alarm at a time: it rings
@@ -86,11 +85,7 @@ object Reminders {
     }
 
     /** Notifications are built outside any activity, so apply the app language by hand. */
-    private fun localized(context: Context): Context {
-        val lang = (context.applicationContext as RuqyaApp).container.prefs.lang
-        val config = Configuration(context.resources.configuration).apply { setLocale(Locale(lang.tag)) }
-        return context.createConfigurationContext(config)
-    }
+    private fun localized(context: Context): Context = RuqyaApp.localized(context)
 }
 
 class ReminderReceiver : BroadcastReceiver() {
@@ -101,10 +96,14 @@ class ReminderReceiver : BroadcastReceiver() {
             if (prefs.reminderOn(r) && prefs.lastDone(r.id) != java.time.LocalDate.now()) Reminders.post(context, r)
         }
         Reminders.schedule(context)
+        NextAdhkarWidget.update(context)
     }
 }
 
 /** Alarms are cleared when the phone restarts or the clock changes; set them again. */
 class SystemEventsReceiver : BroadcastReceiver() {
-    override fun onReceive(context: Context, intent: Intent) = Reminders.schedule(context)
+    override fun onReceive(context: Context, intent: Intent) {
+        Reminders.schedule(context)
+        NextAdhkarWidget.update(context)
+    }
 }
