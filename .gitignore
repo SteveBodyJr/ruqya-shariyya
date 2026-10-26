@@ -1,0 +1,12 @@
+.gradle/
+build/
+app/build/
+local.properties
+.idea/
+*.iml
+.kotlin/
+captures/
+
+# Hadith source dumps are large; tools/README.md says how to download them.
+tools/sources/hadith/
+tools/__pycache__/

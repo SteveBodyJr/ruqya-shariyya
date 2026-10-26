@@ -1,0 +1,662 @@
+{
+  "_comment": "Hand-written content. tools/build_content.py merges the Quran text and translations into app/src/main/assets/ruqya.json and checks every hadith Arabic text against the narration it cites. Never type Quran text here: passages are references only.",
+
+  "books": {
+    "bukhari": {"en": "Sahih al-Bukhari", "sw": "Sahih al-Bukhari"},
+    "muslim": {"en": "Sahih Muslim", "sw": "Sahih Muslim"},
+    "abudawud": {"en": "Sunan Abi Dawud", "sw": "Sunan Abi Dawud"},
+    "tirmidhi": {"en": "Jami' at-Tirmidhi", "sw": "Jami' at-Tirmidhi"},
+    "ibnmajah": {"en": "Sunan Ibn Majah", "sw": "Sunan Ibn Majah"}
+  },
+
+  "passages": [
+    {"id": "fatiha", "ranges": [[1, 1, 7]], "name": {"en": "Al-Fatihah", "sw": "Suratul-Fatiha"}},
+    {"id": "baqarah_1_5", "ranges": [[2, 1, 5]], "name": {"en": "Al-Baqarah, verses 1-5", "sw": "Mwanzo wa Suratul-Baqarah (1-5)"}},
+    {"id": "baqarah_102", "ranges": [[2, 102, 102]], "name": {"en": "Al-Baqarah, verse 102", "sw": "Al-Baqarah, aya ya 102"}},
+    {"id": "baqarah_163", "ranges": [[2, 163, 164]], "name": {"en": "Al-Baqarah, verses 163-164", "sw": "Al-Baqarah, aya 163-164"}},
+    {"id": "kursi", "ranges": [[2, 255, 255]], "name": {"en": "Ayat al-Kursi", "sw": "Ayatul-Kursiy"}},
+    {"id": "baqarah_end", "ranges": [[2, 285, 286]], "name": {"en": "The last two verses of Al-Baqarah", "sw": "Mwisho wa Suratul-Baqarah"}},
+    {"id": "imran_18", "ranges": [[3, 18, 19]], "name": {"en": "Al Imran, verses 18-19", "sw": "Al Imran, aya 18-19"}},
+    {"id": "araf_54", "ranges": [[7, 54, 56]], "name": {"en": "Al-A'raf, verses 54-56", "sw": "Al-A'raf, aya 54-56"}},
+    {"id": "araf_117", "ranges": [[7, 117, 122]], "name": {"en": "Al-A'raf, verses 117-122", "sw": "Al-A'raf, aya 117-122"}},
+    {"id": "yunus_79", "ranges": [[10, 79, 82]], "name": {"en": "Yunus, verses 79-82", "sw": "Yunus, aya 79-82"}},
+    {"id": "taha_65", "ranges": [[20, 65, 69]], "name": {"en": "Ta-Ha, verses 65-69", "sw": "Twaha, aya 65-69"}},
+    {"id": "muminun_115", "ranges": [[23, 115, 118]], "name": {"en": "Al-Mu'minun, verses 115-118", "sw": "Al-Muuminun, aya 115-118"}},
+    {"id": "saffat_1", "ranges": [[37, 1, 10]], "name": {"en": "As-Saffat, verses 1-10", "sw": "As-Saffat, aya 1-10"}},
+    {"id": "ahqaf_29", "ranges": [[46, 29, 32]], "name": {"en": "Al-Ahqaf, verses 29-32", "sw": "Al-Ahqaf, aya 29-32"}},
+    {"id": "rahman_33", "ranges": [[55, 33, 36]], "name": {"en": "Ar-Rahman, verses 33-36", "sw": "Ar-Rahman, aya 33-36"}},
+    {"id": "hashr_21", "ranges": [[59, 21, 24]], "name": {"en": "Al-Hashr, verses 21-24", "sw": "Al-Hashr, aya 21-24"}},
+    {"id": "jinn_1", "ranges": [[72, 1, 9]], "name": {"en": "Al-Jinn, verses 1-9", "sw": "Al-Jinn, aya 1-9"}},
+    {"id": "mulk_3", "ranges": [[67, 3, 4]], "name": {"en": "Al-Mulk, verses 3-4", "sw": "Al-Mulk, aya 3-4"}},
+    {"id": "qalam_51", "ranges": [[68, 51, 52]], "name": {"en": "Al-Qalam, verses 51-52", "sw": "Al-Qalam, aya 51-52"}},
+    {"id": "rad_28", "ranges": [[13, 28, 28]], "name": {"en": "Ar-Ra'd, verse 28", "sw": "Ar-Ra'd, aya ya 28"}},
+    {"id": "isra_82", "ranges": [[17, 82, 82]], "name": {"en": "Al-Isra, verse 82", "sw": "Al-Israa, aya ya 82"}},
+    {"id": "shifa", "ranges": [[9, 14, 14], [10, 57, 57], [16, 69, 69], [17, 82, 82], [26, 80, 80], [41, 44, 44]], "name": {"en": "Verses of healing", "sw": "Aya za uponyaji"}},
+    {"id": "kafirun", "ranges": [[109, 1, 6]], "name": {"en": "Al-Kafirun", "sw": "Suratul-Kafirun"}},
+    {"id": "ikhlas", "ranges": [[112, 1, 4]], "name": {"en": "Al-Ikhlas", "sw": "Suratul-Ikhlas"}},
+    {"id": "falaq", "ranges": [[113, 1, 5]], "name": {"en": "Al-Falaq", "sw": "Suratul-Falaq"}},
+    {"id": "nas", "ranges": [[114, 1, 6]], "name": {"en": "An-Nas", "sw": "Suratun-Naas"}}
+  ],
+
+  "duas": [
+    {
+      "id": "jibril", "category": "ruqya",
+      "title": {"en": "The ruqya of Jibril", "sw": "Ruqyah ya Jibril"},
+      "ar": "بِاسْمِ اللَّهِ أَرْقِيكَ، مِنْ كُلِّ شَيْءٍ يُؤْذِيكَ، مِنْ شَرِّ كُلِّ نَفْسٍ أَوْ عَيْنِ حَاسِدٍ، اللَّهُ يَشْفِيكَ، بِاسْمِ اللَّهِ أَرْقِيكَ",
+      "tr": "Bismillaahi arqiika, min kulli shay'in yu'dhiika, min sharri kulli nafsin aw 'ayni haasidin, Allaahu yashfiika, bismillaahi arqiika.",
+      "en": "In the name of Allah I recite ruqya over you, from everything that harms you, from the evil of every soul or envious eye. May Allah heal you. In the name of Allah I recite ruqya over you.",
+      "sw": "Kwa jina la Allah ninakusomea ruqyah dhidi ya kila kinachokuudhi, na dhidi ya shari ya kila nafsi au jicho la mwenye husuda. Allah akuponye; kwa jina la Allah ninakusomea ruqyah.",
+      "src": [{"book": "muslim", "n": "2186"}],
+      "note": {
+        "en": "Jibril recited this over the Prophet when he was ill. When reciting over yourself you may say 'Bismillaahi arqii nafsii' as your own supplication; that is changing the words to fit who you mean, not the exact wording of the hadith.",
+        "sw": "Jibril alimsomea Mtume dua hii alipokuwa mgonjwa. Unapojisomea mwenyewe, unaweza kusema 'Bismillaahi arqii nafsii' kama dua yako binafsi; huo ni ubadilishaji wa maneno kulingana na unayemkusudia, si lafudhi ileile ya hadith."
+      }
+    },
+    {
+      "id": "adhhib", "category": "ruqya",
+      "title": {"en": "Asking for healing", "sw": "Dua ya kuomba uponyaji"},
+      "ar": "أَذْهِبِ الْبَاسَ رَبَّ النَّاسِ، وَاشْفِ أَنْتَ الشَّافِي، لاَ شِفَاءَ إِلاَّ شِفَاؤُكَ، شِفَاءً لاَ يُغَادِرُ سَقَمًا",
+      "tr": "Adh-hibil-ba'sa Rabban-naas, washfi Antash-Shaafii, laa shifaa'a illaa shifaa'uk, shifaa'an laa yughaadiru saqamaa.",
+      "en": "Remove the harm, O Lord of mankind, and heal, You are the Healer. There is no healing except Your healing, a healing that leaves no illness behind.",
+      "sw": "Ondoa maradhi, Mola wa watu. Ponya, kwani Wewe ndiye Mponyaji. Hakuna uponyaji isipokuwa uponyaji Wako, uponyaji usioacha maradhi.",
+      "src": [{"book": "muslim", "n": "2191"}, {"book": "bukhari", "n": "5675"}],
+      "note": {
+        "en": "The Prophet said this when visiting a sick person, wiping over them with his right hand.",
+        "sw": "Mtume alikuwa akisema dua hii alipomtembelea mgonjwa, akimpangusa kwa mkono wake wa kulia."
+      }
+    },
+    {
+      "id": "adhhib_other", "category": "others",
+      "title": {"en": "Healing dua over someone else", "sw": "Dua ya uponyaji kwa mwingine"},
+      "ar": "اللَّهُمَّ رَبَّ النَّاسِ أَذْهِبِ الْبَاسَ، اشْفِهِ وَأَنْتَ الشَّافِي، لاَ شِفَاءَ إِلاَّ شِفَاؤُكَ، شِفَاءً لاَ يُغَادِرُ سَقَمًا",
+      "tr": "Allaahumma Rabban-naas, adh-hibil-ba's, ishfihi wa Antash-Shaafii, laa shifaa'a illaa shifaa'uk, shifaa'an laa yughaadiru saqamaa.",
+      "en": "O Allah, Lord of mankind, remove the harm and heal him, for You are the Healer. There is no healing except Your healing, a healing that leaves no illness behind.",
+      "sw": "Ee Allah, Mola wa watu, ondoa maradhi na umponye, kwani Wewe ndiye Mponyaji. Hakuna uponyaji isipokuwa uponyaji Wako, uponyaji usioacha maradhi.",
+      "src": [{"book": "bukhari", "n": "5743"}],
+      "note": {
+        "en": "The Prophet said this while wiping over a member of his family with his right hand. For a woman, 'ishfihaa' (heal her) changes only the pronoun.",
+        "sw": "Mtume alisema dua hii akimpangusa mmoja wa watu wa familia yake kwa mkono wa kulia. Kwa mwanamke, 'ishfihaa' (mponye yeye) hubadilisha kiwakilishi tu."
+      }
+    },
+    {
+      "id": "pain_bismillah", "category": "pain",
+      "title": {"en": "Hand on the pain: Bismillah", "sw": "Mkono juu ya maumivu: Bismillah"},
+      "ar": "بِاسْمِ اللَّهِ",
+      "tr": "Bismillaah.",
+      "en": "In the name of Allah.",
+      "sw": "Kwa jina la Allah.",
+      "count": 3,
+      "src": [{"book": "muslim", "n": "2202"}],
+      "note": {
+        "en": "Put your hand on the part of your body that hurts and say this three times, then the next dua seven times.",
+        "sw": "Weka mkono wako juu ya sehemu ya mwili inayouma na useme hivi mara tatu, kisha dua inayofuata mara saba."
+      }
+    },
+    {
+      "id": "pain_audhu", "category": "pain",
+      "title": {"en": "Hand on the pain: seeking refuge", "sw": "Mkono juu ya maumivu: kujikinga"},
+      "ar": "أَعُوذُ بِاللَّهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ",
+      "tr": "A'uudhu billaahi wa qudratihi min sharri maa ajidu wa uhaadhir.",
+      "en": "I seek refuge in Allah and His power from the evil of what I feel and what I fear.",
+      "sw": "Najikinga kwa Allah na uwezo Wake dhidi ya shari ya ninachokihisi na ninachokihofia.",
+      "count": 7,
+      "src": [{"book": "muslim", "n": "2202"}],
+      "note": {
+        "en": "Say it seven times with your hand still on the place of pain.",
+        "sw": "Sema mara saba huku mkono wako ukiwa bado juu ya sehemu inayouma."
+      }
+    },
+    {
+      "id": "visit", "category": "others",
+      "title": {"en": "When visiting the sick", "sw": "Unapomtembelea mgonjwa"},
+      "ar": "أَسْأَلُ اللَّهَ الْعَظِيمَ رَبَّ الْعَرْشِ الْعَظِيمِ أَنْ يَشْفِيَكَ",
+      "tr": "As'alullaahal-'Adhiim, Rabbal-'Arshil-'Adhiim, an yashfiyak.",
+      "en": "I ask Allah the Mighty, Lord of the Mighty Throne, to heal you.",
+      "sw": "Namwomba Allah Mtukufu, Mola wa Arshi tukufu, akuponye.",
+      "count": 7,
+      "src": [{"book": "abudawud", "n": "3106"}, {"book": "tirmidhi", "n": "2083"}],
+      "note": {
+        "en": "Said seven times beside a sick person whose appointed time has not come.",
+        "sw": "Husemwa mara saba karibu na mgonjwa ambaye muda wake haujafika."
+      }
+    },
+    {
+      "id": "children", "category": "others",
+      "title": {"en": "Protection for children", "sw": "Kinga kwa watoto"},
+      "ar": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّةِ مِنْ كُلِّ شَيْطَانٍ وَهَامَّةٍ، وَمِنْ كُلِّ عَيْنٍ لاَمَّةٍ",
+      "tr": "A'uudhu bikalimaatillaahit-taammah, min kulli shaytaanin wa haammah, wa min kulli 'aynin laammah.",
+      "en": "I seek refuge in the perfect words of Allah from every devil and every poisonous creature, and from every harmful eye.",
+      "sw": "Najikinga kwa maneno kamili ya Allah dhidi ya kila shetani na kila mdudu mwenye sumu, na dhidi ya kila jicho baya.",
+      "src": [{"book": "bukhari", "n": "3371"}],
+      "note": {
+        "en": "The Prophet sought protection for al-Hasan and al-Husayn with these words, and said Ibrahim used them for Isma'il and Ishaq.",
+        "sw": "Mtume aliwaombea kinga al-Hasan na al-Husayn kwa maneno haya, na akasema Ibrahim aliwaombea nayo Ismail na Is-haq."
+      }
+    },
+    {
+      "id": "kalimat", "category": "protection",
+      "title": {"en": "The perfect words of Allah", "sw": "Maneno kamili ya Allah"},
+      "ar": "أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
+      "tr": "A'uudhu bikalimaatillaahit-taammaati min sharri maa khalaq.",
+      "en": "I seek refuge in the perfect words of Allah from the evil of what He has created.",
+      "sw": "Najikinga kwa maneno kamili ya Allah dhidi ya shari ya alichokiumba.",
+      "src": [{"book": "muslim", "n": "2708"}, {"book": "muslim", "n": "2709"}],
+      "note": {
+        "en": "Whoever says it when stopping at a place, nothing will harm him until he leaves it. The Prophet also told a man stung by a scorpion that had he said it in the evening, it would not have harmed him.",
+        "sw": "Atakayesema hivi anaposhuka mahali, hakuna kitakachomdhuru mpaka aondoke. Pia Mtume alimwambia mtu aliyeumwa na nge kwamba lau angesema hivi jioni, usingemdhuru."
+      }
+    },
+    {
+      "id": "bismillah_ladhi", "category": "protection",
+      "title": {"en": "In the name of Allah, with whose name nothing harms", "sw": "Kwa jina la Allah ambaye hakuna kinachodhuru pamoja na jina Lake"},
+      "ar": "بِسْمِ اللَّهِ الَّذِي لاَ يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الأَرْضِ وَلاَ فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
+      "tr": "Bismillaahil-ladhii laa yadurru ma'asmihi shay'un fil-ardi wa laa fis-samaa'i wa Huwas-Samii'ul-'Aliim.",
+      "en": "In the name of Allah, with whose name nothing on earth or in the heaven can cause harm, and He is the All-Hearing, the All-Knowing.",
+      "sw": "Kwa jina la Allah ambaye pamoja na jina Lake hakuna kitu kinachodhuru ardhini wala mbinguni, Naye ndiye Msikivu, Mjuzi.",
+      "count": 3,
+      "src": [{"book": "tirmidhi", "n": "3388"}, {"book": "abudawud", "n": "5088"}],
+      "note": {
+        "en": "Three times in the morning and three times in the evening: no sudden affliction will strike him until evening (or morning).",
+        "sw": "Mara tatu asubuhi na mara tatu jioni: hatapatwa na balaa la ghafla mpaka jioni (au asubuhi)."
+      }
+    },
+    {
+      "id": "afini", "category": "protection",
+      "title": {"en": "For well-being of body, hearing and sight", "sw": "Kuomba afya ya mwili, usikivu na macho"},
+      "ar": "اللَّهُمَّ عَافِنِي فِي بَدَنِي اللَّهُمَّ عَافِنِي فِي سَمْعِي اللَّهُمَّ عَافِنِي فِي بَصَرِي لاَ إِلَهَ إِلاَّ أَنْتَ",
+      "tr": "Allaahumma 'aafinii fii badanii, Allaahumma 'aafinii fii sam'ii, Allaahumma 'aafinii fii basarii, laa ilaaha illaa Ant.",
+      "en": "O Allah, grant me well-being in my body. O Allah, grant me well-being in my hearing. O Allah, grant me well-being in my sight. There is none worthy of worship except You.",
+      "sw": "Ee Allah, nipe afya katika mwili wangu. Ee Allah, nipe afya katika usikivu wangu. Ee Allah, nipe afya katika macho yangu. Hakuna mola apasaye kuabudiwa ila Wewe.",
+      "count": 3,
+      "src": [{"book": "abudawud", "n": "5090"}],
+      "note": {
+        "en": "Abu Bakrah repeated it three times in the morning and three times in the evening, saying he heard the Prophet supplicate with it.",
+        "sw": "Abu Bakrah aliirudia mara tatu asubuhi na mara tatu jioni, akisema alimsikia Mtume akiomba kwayo."
+      }
+    },
+    {
+      "id": "karb", "category": "distress",
+      "title": {"en": "In times of distress", "sw": "Wakati wa dhiki"},
+      "ar": "لاَ إِلَهَ إِلاَّ اللَّهُ الْعَظِيمُ الْحَلِيمُ، لاَ إِلَهَ إِلاَّ اللَّهُ رَبُّ الْعَرْشِ الْعَظِيمِ، لاَ إِلَهَ إِلاَّ اللَّهُ رَبُّ السَّمَوَاتِ، وَرَبُّ الأَرْضِ، وَرَبُّ الْعَرْشِ الْكَرِيمِ",
+      "tr": "Laa ilaaha illallaahul-'Adhiimul-Haliim, laa ilaaha illallaahu Rabbul-'Arshil-'Adhiim, laa ilaaha illallaahu Rabbus-samaawaati wa Rabbul-ardi wa Rabbul-'Arshil-Kariim.",
+      "en": "There is none worthy of worship except Allah, the Mighty, the Forbearing. There is none worthy of worship except Allah, Lord of the Mighty Throne. There is none worthy of worship except Allah, Lord of the heavens, Lord of the earth and Lord of the Noble Throne.",
+      "sw": "Hakuna mola apasaye kuabudiwa ila Allah, Mtukufu, Mpole. Hakuna mola apasaye kuabudiwa ila Allah, Mola wa Arshi tukufu. Hakuna mola apasaye kuabudiwa ila Allah, Mola wa mbingu, Mola wa ardhi na Mola wa Arshi tukufu.",
+      "src": [{"book": "bukhari", "n": "6346"}],
+      "note": {
+        "en": "The Prophet used to say this at times of distress.",
+        "sw": "Mtume alikuwa akisema hivi wakati wa dhiki."
+      }
+    },
+    {
+      "id": "yunus", "category": "distress",
+      "title": {"en": "The supplication of Yunus", "sw": "Dua ya Nabii Yunus"},
+      "ar": "لاَ إِلَهَ إِلاَّ أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ",
+      "tr": "Laa ilaaha illaa Anta, subhaanaka, innii kuntu minadh-dhaalimiin.",
+      "en": "There is none worthy of worship except You. Glory be to You. Truly I have been among the wrongdoers.",
+      "sw": "Hakuna mola apasaye kuabudiwa ila Wewe, Umetakasika. Hakika mimi nimekuwa miongoni mwa waliodhulumu nafsi zao.",
+      "src": [{"book": "tirmidhi", "n": "3505"}],
+      "note": {
+        "en": "Yunus called with it in the belly of the whale. No Muslim calls with it for anything except that Allah answers him.",
+        "sw": "Yunus aliomba kwayo akiwa tumboni mwa samaki. Hakuna Muislamu anayeomba kwayo jambo lolote isipokuwa Allah humjibu."
+      }
+    },
+    {
+      "id": "hamm", "category": "distress",
+      "title": {"en": "Refuge from worry and grief", "sw": "Kujikinga na wasiwasi na huzuni"},
+      "ar": "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَالْعَجْزِ وَالْكَسَلِ، وَالْجُبْنِ وَالْبُخْلِ، وَضَلَعِ الدَّيْنِ، وَغَلَبَةِ الرِّجَالِ",
+      "tr": "Allaahumma innii a'uudhu bika minal-hammi wal-hazan, wal-'ajzi wal-kasal, wal-jubni wal-bukhl, wa dala'id-dayni wa ghalabatir-rijaal.",
+      "en": "O Allah, I seek refuge in You from worry and grief, from incapacity and laziness, from cowardice and miserliness, from the burden of debt and from being overpowered by men.",
+      "sw": "Ee Allah, najikinga Kwako dhidi ya wasiwasi na huzuni, udhaifu na uvivu, woga na ubahili, uzito wa deni na kushindwa na watu.",
+      "src": [{"book": "bukhari", "n": "6369"}]
+    },
+    {
+      "id": "rahmataka", "category": "distress",
+      "title": {"en": "The supplication of the distressed", "sw": "Dua ya mwenye dhiki"},
+      "ar": "اللَّهُمَّ رَحْمَتَكَ أَرْجُو فَلاَ تَكِلْنِي إِلَى نَفْسِي طَرْفَةَ عَيْنٍ وَأَصْلِحْ لِي شَأْنِي كُلَّهُ لاَ إِلَهَ إِلاَّ أَنْتَ",
+      "tr": "Allaahumma rahmataka arjuu, falaa takilnii ilaa nafsii tarfata 'ayn, wa aslih lii sha'nii kullah, laa ilaaha illaa Ant.",
+      "en": "O Allah, it is Your mercy that I hope for, so do not leave me to myself even for the blink of an eye, and set right all my affairs. There is none worthy of worship except You.",
+      "sw": "Ee Allah, rehema Yako ndiyo ninayoitarajia, basi usiniachie nafsi yangu hata kwa kupepesa jicho, na unitengenezee mambo yangu yote. Hakuna mola apasaye kuabudiwa ila Wewe.",
+      "src": [{"book": "abudawud", "n": "5090"}]
+    },
+    {
+      "id": "turbah", "category": "others",
+      "title": {"en": "With a little soil and saliva", "sw": "Kwa udongo na mate kidogo"},
+      "ar": "بِسْمِ اللَّهِ، تُرْبَةُ أَرْضِنَا، بِرِيقَةِ بَعْضِنَا، يُشْفَى سَقِيمُنَا بِإِذْنِ رَبِّنَا",
+      "tr": "Bismillaah, turbatu ardinaa, biriiqati ba'dinaa, yushfaa saqiimunaa bi-idhni Rabbinaa.",
+      "en": "In the name of Allah, the soil of our land, with the saliva of some of us, our sick one is healed by the permission of our Lord.",
+      "sw": "Kwa jina la Allah, udongo wa ardhi yetu, pamoja na mate ya baadhi yetu, mgonjwa wetu huponywa kwa idhini ya Mola wetu.",
+      "src": [{"book": "bukhari", "n": "5745"}],
+      "note": {
+        "en": "The Prophet said this for a sick person. Scholars such as an-Nawawi explained that he put a little of his saliva on his finger, touched the earth with it, then wiped the place of the wound or pain.",
+        "sw": "Mtume alisema hivi kwa mgonjwa. Wanachuoni kama an-Nawawi walieleza kwamba aliweka mate kidogo kwenye kidole chake, akagusa ardhi nacho, kisha akapangusa sehemu ya jeraha au maumivu."
+      }
+    }
+  ],
+
+  "dua_categories": [
+    {"id": "ruqya", "title": {"en": "Ruqya", "sw": "Ruqyah"}},
+    {"id": "pain", "title": {"en": "Pain and illness", "sw": "Maumivu na maradhi"}},
+    {"id": "protection", "title": {"en": "Daily protection", "sw": "Kinga ya kila siku"}},
+    {"id": "distress", "title": {"en": "Worry and distress", "sw": "Wasiwasi na dhiki"}},
+    {"id": "others", "title": {"en": "For others", "sw": "Kwa wengine"}}
+  ],
+
+  "actions": {
+    "prepare": {
+      "title": {"en": "Prepare", "sw": "Jitayarishe"},
+      "body": {
+        "en": "Sit in a quiet place and make the intention to ask Allah for healing. Wudu is good but it is not a condition for ruqya. Recite calmly; you can follow along in a Mushaf to recite the verses correctly.",
+        "sw": "Kaa mahali tulivu na weka nia ya kumuomba Allah uponyaji. Wudhu ni jambo jema lakini si sharti la ruqyah. Soma kwa utulivu; unaweza kutumia Msahafu kufuatilia aya kwa usahihi."
+      }
+    },
+    "wipe": {
+      "title": {"en": "Blow into your hands and wipe", "sw": "Kupenga mikononi na kujipangusa"},
+      "body": {
+        "en": "After reciting Al-Ikhlas, Al-Falaq and An-Nas, bring your palms together, blow lightly into them and wipe over your head, your face and the rest of your body that you can reach. Do this three times.",
+        "sw": "Baada ya kusoma Al-Ikhlas, Al-Falaq na An-Naas, kusanya viganja, punguza pumzi kwa upole ndani yake na ujipanguse kichwani, usoni na sehemu nyingine za mwili unazoweza kufikia. Fanya hivyo mara tatu."
+      },
+      "passages": ["ikhlas", "falaq", "nas"],
+      "count": 3,
+      "src": [{"book": "bukhari", "n": "5017"}]
+    },
+    "over_others": {
+      "title": {"en": "Reciting over someone else", "sw": "Kumsomea mtu mwingine"},
+      "body": {
+        "en": "Sit beside the person, ask Allah for their healing and recite over them. You may place your right hand on them or on the place of pain, as the Prophet wiped over the sick with his right hand. Keep it gentle and respectful; a man should not touch a woman who is not his mahram.",
+        "sw": "Kaa karibu na mtu huyo, mwombe Allah amponye, kisha umsomee. Unaweza kuweka mkono wako wa kulia juu yake au juu ya sehemu inayouma, kama Mtume alivyokuwa akiwapangusa wagonjwa kwa mkono wa kulia. Fanya kwa upole na heshima; mwanamume asimguse mwanamke asiye mahram wake."
+      },
+      "src": [{"book": "muslim", "n": "2191"}]
+    }
+  },
+
+  "sessions": [
+    {
+      "id": "eye", "icon": "eye",
+      "title": {"en": "Evil eye", "sw": "Kijicho"},
+      "subtitle": {"en": "A self-ruqya for the evil eye from the Quran and Sunnah", "sw": "Ruqyah sahihi ya kujisomea kwa kijicho"},
+      "steps": [
+        {"action": "prepare"},
+        {"passage": "fatiha", "src": [{"book": "bukhari", "n": "5736"}], "note": {"en": "Using Al-Fatihah as ruqya is established in Sahih al-Bukhari 5736.", "sw": "Al-Fatiha kutumika kama ruqyah imethibiti katika Sahih al-Bukhari 5736."}},
+        {"passage": "kursi", "src": [{"book": "bukhari", "n": "2311"}], "note": {"en": "The virtue of reciting it before sleep is narrated in Sahih al-Bukhari 2311.", "sw": "Fadhila ya kuisoma kabla ya kulala imesimuliwa katika Sahih al-Bukhari 2311."}},
+        {"passage": "baqarah_end", "src": [{"book": "bukhari", "n": "5009"}], "note": {"en": "They contain faith, a prayer for forgiveness and a plea for help. The virtue of reciting them at night is established in Sahih al-Bukhari 5009.", "sw": "Zina imani, dua ya msamaha, na maombi ya msaada. Fadhila ya kusoma aya mbili za mwisho za Suratul-Baqarah usiku imethibiti katika Sahih al-Bukhari 5009."}},
+        {"passage": "ikhlas"},
+        {"passage": "falaq", "note": {"en": "In brief: seeking refuge with the Lord of daybreak from the evil of creation, of darkness, of those who blow on knots, and of the envier when he envies.", "sw": "Maana kwa ufupi: Kuomba kinga kwa Mola wa mapambazuko dhidi ya shari ya viumbe, giza, wanaopulizia mafundo na mwenye husuda anapohusudu."}},
+        {"passage": "nas"},
+        {"dua": "jibril"},
+        {"dua": "adhhib"},
+        {"action": "wipe"}
+      ]
+    },
+    {
+      "id": "full", "icon": "book",
+      "title": {"en": "Complete ruqya", "sw": "Ruqyah kamili"},
+      "subtitle": {"en": "The verses scholars commonly recite for ruqya, then the Prophet's supplications", "sw": "Aya ambazo wanachuoni husoma kwa ruqyah, kisha dua za Mtume"},
+      "steps": [
+        {"action": "prepare"},
+        {"passage": "fatiha", "src": [{"book": "bukhari", "n": "5736"}]},
+        {"passage": "baqarah_1_5"},
+        {"passage": "baqarah_163"},
+        {"passage": "kursi", "src": [{"book": "bukhari", "n": "2311"}]},
+        {"passage": "baqarah_end", "src": [{"book": "bukhari", "n": "5009"}]},
+        {"passage": "imran_18"},
+        {"passage": "araf_54"},
+        {"passage": "araf_117"},
+        {"passage": "yunus_79"},
+        {"passage": "taha_65"},
+        {"passage": "muminun_115"},
+        {"passage": "saffat_1"},
+        {"passage": "ahqaf_29"},
+        {"passage": "rahman_33"},
+        {"passage": "hashr_21"},
+        {"passage": "jinn_1"},
+        {"passage": "mulk_3"},
+        {"passage": "qalam_51"},
+        {"passage": "shifa"},
+        {"passage": "kafirun"},
+        {"passage": "ikhlas"},
+        {"passage": "falaq"},
+        {"passage": "nas"},
+        {"dua": "jibril"},
+        {"dua": "adhhib"},
+        {"dua": "kalimat"},
+        {"action": "wipe"}
+      ]
+    },
+    {
+      "id": "sihr", "icon": "shield",
+      "title": {"en": "Magic (sihr)", "sw": "Uchawi (sihr)"},
+      "subtitle": {"en": "Verses about Musa and the magicians, and the falsehood of magic", "sw": "Aya kuhusu Musa na wachawi, na ubatili wa uchawi"},
+      "steps": [
+        {"action": "prepare"},
+        {"passage": "fatiha", "src": [{"book": "bukhari", "n": "5736"}]},
+        {"passage": "kursi", "src": [{"book": "bukhari", "n": "2311"}]},
+        {"passage": "baqarah_102"},
+        {"passage": "araf_117"},
+        {"passage": "yunus_79"},
+        {"passage": "taha_65"},
+        {"passage": "baqarah_end", "src": [{"book": "bukhari", "n": "5009"}]},
+        {"passage": "ikhlas"},
+        {"passage": "falaq"},
+        {"passage": "nas"},
+        {"dua": "jibril"},
+        {"dua": "adhhib"},
+        {"action": "wipe"}
+      ]
+    },
+    {
+      "id": "jinn", "icon": "moon",
+      "title": {"en": "Jinn and whispers", "sw": "Majini na wasiwasi"},
+      "subtitle": {"en": "Seeking refuge from the devils and their whispering", "sw": "Kujikinga na mashetani na wasiwasi wao"},
+      "steps": [
+        {"action": "prepare"},
+        {"passage": "fatiha", "src": [{"book": "bukhari", "n": "5736"}]},
+        {"passage": "baqarah_1_5"},
+        {"passage": "kursi", "src": [{"book": "bukhari", "n": "2311"}]},
+        {"passage": "saffat_1"},
+        {"passage": "ahqaf_29"},
+        {"passage": "rahman_33"},
+        {"passage": "jinn_1"},
+        {"passage": "muminun_115"},
+        {"passage": "hashr_21"},
+        {"passage": "baqarah_end", "src": [{"book": "bukhari", "n": "5009"}]},
+        {"passage": "ikhlas"},
+        {"passage": "falaq"},
+        {"passage": "nas"},
+        {"dua": "kalimat"},
+        {"action": "wipe"}
+      ]
+    },
+    {
+      "id": "sick", "icon": "heart",
+      "title": {"en": "Illness and pain", "sw": "Maradhi na maumivu"},
+      "subtitle": {"en": "The verses of healing and the Prophet's supplications for the sick", "sw": "Aya za uponyaji na dua za Mtume kwa mgonjwa"},
+      "steps": [
+        {"action": "prepare"},
+        {"passage": "fatiha", "src": [{"book": "bukhari", "n": "5736"}]},
+        {"passage": "shifa"},
+        {"dua": "pain_bismillah"},
+        {"dua": "pain_audhu"},
+        {"dua": "adhhib"},
+        {"passage": "ikhlas", "src": [{"book": "bukhari", "n": "5016"}]},
+        {"passage": "falaq"},
+        {"passage": "nas"},
+        {"action": "wipe"}
+      ]
+    },
+    {
+      "id": "distress", "icon": "calm",
+      "title": {"en": "Worry and distress", "sw": "Wasiwasi na dhiki"},
+      "subtitle": {"en": "For a heavy heart: remembrance and the Prophet's supplications", "sw": "Kwa moyo mzito: dhikri na dua za Mtume"},
+      "steps": [
+        {"passage": "rad_28"},
+        {"dua": "karb"},
+        {"dua": "yunus"},
+        {"dua": "hamm"},
+        {"dua": "rahmataka"},
+        {"passage": "fatiha"},
+        {"passage": "kursi"},
+        {"passage": "baqarah_end"}
+      ]
+    },
+    {
+      "id": "family", "icon": "family",
+      "title": {"en": "For a child or family member", "sw": "Kwa mtoto au mwanafamilia"},
+      "subtitle": {"en": "Reciting over someone you care for", "sw": "Kumsomea unayempenda"},
+      "steps": [
+        {"action": "over_others"},
+        {"passage": "fatiha", "src": [{"book": "bukhari", "n": "5736"}]},
+        {"passage": "kursi"},
+        {"passage": "ikhlas"},
+        {"passage": "falaq"},
+        {"passage": "nas"},
+        {"dua": "children"},
+        {"dua": "jibril"},
+        {"dua": "adhhib_other"},
+        {"dua": "visit"}
+      ]
+    }
+  ],
+
+  "routines": [
+    {
+      "id": "morning", "icon": "sun",
+      "title": {"en": "Morning protection", "sw": "Kinga ya asubuhi"},
+      "subtitle": {"en": "After Fajr until the sun is high", "sw": "Baada ya Alfajiri mpaka jua lipande"},
+      "steps": [
+        {"passage": "ikhlas", "count": 3, "src": [{"book": "abudawud", "n": "5082"}], "note": {"en": "Al-Ikhlas, Al-Falaq and An-Nas three times each, morning and evening: 'they will suffice you against everything'.", "sw": "Al-Ikhlas, Al-Falaq na An-Naas mara tatu kila moja, asubuhi na jioni: 'zitakutosheleza dhidi ya kila kitu'."}},
+        {"passage": "falaq", "count": 3, "src": [{"book": "abudawud", "n": "5082"}]},
+        {"passage": "nas", "count": 3, "src": [{"book": "abudawud", "n": "5082"}]},
+        {"dua": "bismillah_ladhi"},
+        {"dua": "afini"}
+      ]
+    },
+    {
+      "id": "evening", "icon": "sunset",
+      "title": {"en": "Evening protection", "sw": "Kinga ya jioni"},
+      "subtitle": {"en": "After Asr until night", "sw": "Baada ya Alasiri mpaka usiku"},
+      "steps": [
+        {"passage": "ikhlas", "count": 3, "src": [{"book": "abudawud", "n": "5082"}], "note": {"en": "Al-Ikhlas, Al-Falaq and An-Nas three times each, morning and evening: 'they will suffice you against everything'.", "sw": "Al-Ikhlas, Al-Falaq na An-Naas mara tatu kila moja, asubuhi na jioni: 'zitakutosheleza dhidi ya kila kitu'."}},
+        {"passage": "falaq", "count": 3, "src": [{"book": "abudawud", "n": "5082"}]},
+        {"passage": "nas", "count": 3, "src": [{"book": "abudawud", "n": "5082"}]},
+        {"dua": "bismillah_ladhi"},
+        {"dua": "afini"},
+        {"dua": "kalimat"}
+      ]
+    },
+    {
+      "id": "bedtime", "icon": "bed",
+      "title": {"en": "Before sleep", "sw": "Kabla ya kulala"},
+      "subtitle": {"en": "Ayat al-Kursi, the end of Al-Baqarah and the three Quls", "sw": "Ayatul-Kursiy, mwisho wa Al-Baqarah na sura tatu"},
+      "steps": [
+        {"passage": "kursi", "src": [{"book": "bukhari", "n": "2311"}], "note": {"en": "Whoever recites it when going to bed, a guardian from Allah stays with him and no devil comes near him until morning.", "sw": "Atakayeisoma anapokwenda kulala, atakuwa na mlinzi kutoka kwa Allah na shetani hatamkaribia mpaka asubuhi."}},
+        {"passage": "baqarah_end", "src": [{"book": "bukhari", "n": "5009"}], "note": {"en": "Whoever recites the last two verses of Al-Baqarah at night, they will suffice him.", "sw": "Atakayesoma aya mbili za mwisho za Suratul-Baqarah usiku, zitamtosheleza."}},
+        {"action": "wipe"}
+      ]
+    }
+  ],
+
+  "articles": [
+    {
+      "id": "what", "icon": "info",
+      "title": {"en": "What is ruqya shariyya?", "sw": "Ruqyah ya kisharia ni nini?"},
+      "body": {
+        "en": [
+          "Ruqya is reciting the Quran, the names and attributes of Allah, and the supplications taught by the Prophet (peace be upon him) over yourself or someone else, asking Allah for healing and protection.",
+          "The Prophet approved ruqya as long as it contains no shirk. When a companion recited Al-Fatihah over a man who had been stung and he recovered, the Prophet asked: 'How did you know it is a ruqya?'",
+          "Scholars name three conditions for ruqya to be lawful: it is with the words of Allah, His names and attributes, or authentic supplications; it is in Arabic or in words whose meaning is understood; and the one reciting believes it has no power by itself, because healing comes only from Allah by His decree.",
+          "Ruqya is worship and a means of asking Allah for healing. There is no promise of recovery within a fixed time. Keep making dua, be patient, and use the lawful means as well, including medical treatment."
+        ],
+        "sw": [
+          "Ruqyah ya kisharia ni kusoma Qur'an, majina na sifa za Allah, na dua alizofundisha Mtume (rehema na amani ziwe juu yake) juu yako mwenyewe au juu ya mtu mwingine, ukimwomba Allah uponyaji na kinga.",
+          "Mtume aliruhusu ruqyah ilimradi haina shirki. Swahaba alipomsomea Al-Fatiha mtu aliyeumwa (na mdudu) akapona, Mtume aliuliza: 'Umejuaje kwamba ni ruqyah?'",
+          "Wanachuoni wametaja masharti matatu ili ruqyah iwe halali: iwe kwa maneno ya Allah, majina na sifa Zake, au dua sahihi; iwe kwa Kiarabu au kwa maneno yanayoeleweka maana yake; na msomaji aamini kwamba haina nguvu yenyewe, kwa sababu uponyaji unatoka kwa Allah peke yake kwa kudura Yake.",
+          "Ruqyah ni ibada na sababu ya kuomba uponyaji; hakuna ahadi ya kupona ndani ya muda maalumu. Endelea kuomba dua, kuwa na subira, na tumia pia sababu halali, ikiwemo matibabu ya hospitali."
+        ]
+      },
+      "evidence": [
+        {"passage": "isra_82"},
+        {"book": "muslim", "n": "2200", "ar": "اعْرِضُوا عَلَيَّ رُقَاكُمْ لاَ بَأْسَ بِالرُّقَى مَا لَمْ يَكُنْ فِيهِ شِرْكٌ",
+         "en": "Show me your ruqyas. There is no harm in ruqya as long as it contains no shirk.",
+         "sw": "Nionyesheni ruqyah zenu. Hakuna ubaya katika ruqyah ilimradi haina shirki."},
+        {"book": "bukhari", "n": "5736", "ar": "وَمَا أَدْرَاكَ أَنَّهَا رُقْيَةٌ",
+         "en": "And how did you know it is a ruqya?",
+         "sw": "Na umejuaje kwamba hiyo ni ruqyah?"}
+      ]
+    },
+    {
+      "id": "self", "icon": "hands",
+      "title": {"en": "How to recite ruqya over yourself", "sw": "Jinsi ya kujisomea ruqyah"},
+      "body": {
+        "en": [
+          "You can recite ruqya over yourself. You do not need a special raqi, and nobody needs to be paid.",
+          "Sit in a calm place with the intention of asking Allah for healing. Wudu is good but it is not a condition. Recite clearly, think about the meaning and turn your heart to Allah.",
+          "As the Prophet did, you may recite into your cupped hands, blow lightly and wipe over your head, your face and as much of your body as you can reach.",
+          "For pain, put your hand on the place that hurts, say 'Bismillah' three times, then say seven times: 'A'uudhu billaahi wa qudratihi min sharri maa ajidu wa uhaadhir'.",
+          "Repeat what you need. Fixed numbers such as 41, 313 or 1,000 repetitions have no proof in the Sunnah; keep only the numbers the hadith itself mentions.",
+          "Keep up your daily protection: the morning and evening remembrance and the verses before sleep."
+        ],
+        "sw": [
+          "Unaweza kujisomea ruqyah mwenyewe. Huhitaji msomaji maalumu, na hakuna anayehitaji kulipwa.",
+          "Kaa mahali tulivu ukiwa na nia ya kumuomba Allah uponyaji. Wudhu ni jambo jema lakini si sharti. Soma kwa uwazi, tafakari maana na uelekeze moyo wako kwa Allah.",
+          "Kama alivyofanya Mtume, unaweza kusoma ndani ya viganja vyako, kupuliza kwa upole na kujipangusa kichwani, usoni na sehemu ya mwili unayoweza kufikia.",
+          "Kwa maumivu, weka mkono wako juu ya sehemu inayouma, sema 'Bismillah' mara tatu, kisha sema mara saba: 'A'uudhu billaahi wa qudratihi min sharri maa ajidu wa uhaadhir'.",
+          "Rudia kadiri unavyohitaji. Idadi maalumu kama 41, 313 au 1,000 hazina ushahidi katika Sunnah; shika idadi zilizotajwa na hadith yenyewe tu.",
+          "Endelea na kinga yako ya kila siku: adhkar za asubuhi na jioni na aya za kabla ya kulala."
+        ]
+      },
+      "evidence": [
+        {"book": "bukhari", "n": "5017", "ar": "كَانَ إِذَا أَوَى إِلَى فِرَاشِهِ كُلَّ لَيْلَةٍ جَمَعَ كَفَّيْهِ ثُمَّ نَفَثَ فِيهِمَا",
+         "en": "When he went to bed each night, he would bring his palms together and blow into them (and recite Al-Ikhlas, Al-Falaq and An-Nas, then wipe over his body three times).",
+         "sw": "Alipokwenda kulala kila usiku, alikusanya viganja vyake na kupuliza ndani yake (na kusoma Al-Ikhlas, Al-Falaq na An-Naas, kisha kujipangusa mwilini mara tatu)."},
+        {"book": "bukhari", "n": "5016", "ar": "كَانَ إِذَا اشْتَكَى يَقْرَأُ عَلَى نَفْسِهِ بِالْمُعَوِّذَاتِ وَيَنْفُثُ",
+         "en": "When he was ill, he would recite the Mu'awwidhat over himself and blow.",
+         "sw": "Alipokuwa mgonjwa, alikuwa akijisomea Al-Mu'awwidhat na kupuliza."},
+        {"book": "muslim", "n": "2202", "ar": "ضَعْ يَدَكَ عَلَى الَّذِي تَأَلَّمَ مِنْ جَسَدِكَ وَقُلْ بِاسْمِ اللَّهِ",
+         "en": "Put your hand on the part of your body that hurts and say: Bismillah (three times), and say seven times: A'uudhu billaahi wa qudratihi min sharri maa ajidu wa uhaadhir.",
+         "sw": "Weka mkono wako juu ya sehemu ya mwili wako inayouma na useme: Bismillah (mara tatu), na useme mara saba: A'uudhu billaahi wa qudratihi min sharri maa ajidu wa uhaadhir."}
+      ]
+    },
+    {
+      "id": "eye", "icon": "eye",
+      "title": {"en": "The evil eye", "sw": "Kijicho"},
+      "body": {
+        "en": [
+          "The evil eye is real, as the Prophet said. It comes from admiration or envy, and it harms only by the permission of Allah.",
+          "When you see something you like in someone else, in your child or in yourself, ask Allah to bless it, for example 'Baarakallaahu fiik' or 'Allaahumma baarik'.",
+          "If the person whose eye caused the harm is known, they may be asked to wash, and the water is poured over the one affected. The Prophet said: 'If you are asked to wash, then wash.'",
+          "Do not accuse anyone of giving the evil eye without clear evidence.",
+          "Symptoms such as vomiting, yawning, feeling hot or certain dreams do not prove the evil eye. Recite the ruqya, keep your morning and evening remembrance, and see a doctor too."
+        ],
+        "sw": [
+          "Kijicho kimethibiti, kama alivyosema Mtume. Hutokana na kustaajabia au husuda, na hakidhuru isipokuwa kwa idhini ya Allah.",
+          "Unapoona kitu kinachokupendeza kwa mtu mwingine, kwa mtoto wako au kwako mwenyewe, mwombe Allah akibariki, kwa mfano 'Baarakallaahu fiik' au 'Allaahumma baarik'.",
+          "Ikiwa mtu aliyesababisha kijicho anajulikana, anaweza kuombwa aoge (atawadhe), na maji hayo yamwagiwe aliyeathirika. Mtume alisema: 'Mkiombwa kuoga, basi ogeni.'",
+          "Usimtuhumu mtu kwa kijicho bila ushahidi.",
+          "Kutapika, kupiga miayo, kuhisi joto au kuota ndoto fulani si uthibitisho wa kijicho. Jisomee ruqyah, endelea na adhkar za asubuhi na jioni, na umwone daktari pia."
+        ]
+      },
+      "evidence": [
+        {"passage": "qalam_51"},
+        {"book": "bukhari", "n": "5740", "ar": "الْعَيْنُ حَقٌّ",
+         "en": "The evil eye is real.",
+         "sw": "Kijicho ni kweli."},
+        {"book": "muslim", "n": "2188", "ar": "الْعَيْنُ حَقٌّ وَلَوْ كَانَ شَيْءٌ سَابَقَ الْقَدَرَ سَبَقَتْهُ الْعَيْنُ وَإِذَا اسْتُغْسِلْتُمْ فَاغْسِلُوا",
+         "en": "The evil eye is real. If anything were to overtake destiny, the evil eye would. And when you are asked to wash, then wash.",
+         "sw": "Kijicho ni kweli. Lau kingekuwepo kitu kinachotangulia kudura, kijicho kingeitangulia. Na mkiombwa kuoga, basi ogeni."},
+        {"book": "ibnmajah", "n": "3509", "ar": "إِذَا رَأَى أَحَدُكُمْ مِنْ أَخِيهِ مَا يُعْجِبُهُ فَلْيَدْعُ لَهُ بِالْبَرَكَةِ",
+         "en": "When one of you sees something in his brother that pleases him, let him pray for blessing for him.",
+         "sw": "Mmoja wenu akiona kwa ndugu yake kitu kinachompendeza, amwombee baraka."},
+        {"book": "abudawud", "n": "3880", "ar": "كَانَ يُؤْمَرُ الْعَائِنُ فَيَتَوَضَّأُ ثُمَّ يَغْتَسِلُ مِنْهُ الْمَعِينُ",
+         "en": "The one who gave the evil eye would be told to perform wudu, then the one affected would wash with that water.",
+         "sw": "Aliyetoa kijicho aliamrishwa kutawadha, kisha aliyeathirika huoga kwa maji hayo."}
+      ]
+    },
+    {
+      "id": "avoid", "icon": "block",
+      "title": {"en": "What to avoid", "sw": "Mambo ya kuepuka"},
+      "body": {
+        "en": [
+          "Amulets, charms, threads and written papers hung for protection. The Prophet called such charms shirk. Many scholars also advised against amulets with Quran written on them, to close the door to relying on objects.",
+          "Fortune tellers, sorcerers and anyone who claims to know the unseen, asks for your mother's name, or asks for a sacrifice to anyone other than Allah.",
+          "Seeking help from jinn, and 'ruqya' with words, symbols, numbers or names whose meaning is not understood.",
+          "Anyone who demands large payments, isolates you, touches you in an improper way, or tells you to stop your medicine."
+        ],
+        "sw": [
+          "Hirizi, talasimu, nyuzi na karatasi zilizoandikwa zinazotundikwa kwa ajili ya kinga. Mtume aliita hirizi hizo shirki. Wanachuoni wengi pia walishauri kuepuka hirizi zilizoandikwa Qur'an, ili kufunga mlango wa kutegemea vitu.",
+          "Watabiri, wachawi na yeyote anayedai kujua mambo ya ghaibu, anayeuliza jina la mama yako, au anayeomba kafara kwa asiyekuwa Allah.",
+          "Kuomba msaada wa majini, na 'ruqyah' yenye maneno, alama, namba au majina yasiyoeleweka maana yake.",
+          "Yeyote anayedai malipo makubwa, anayekutenga na watu, anayekugusa isivyofaa, au anayekuambia uache dawa zako."
+        ]
+      },
+      "evidence": [
+        {"book": "abudawud", "n": "3883", "ar": "إِنَّ الرُّقَى وَالتَّمَائِمَ وَالتِّوَلَةَ شِرْكٌ",
+         "en": "Incantations, amulets and love-charms are shirk. (The incantations meant here are those containing shirk, as the next hadith shows.)",
+         "sw": "Ruqyah (za kishirikina), hirizi na dawa za mapenzi ni shirki. (Ruqyah zinazokusudiwa hapa ni zile zenye shirki, kama inavyoonyesha hadith inayofuata.)"},
+        {"book": "muslim", "n": "2200", "ar": "لاَ بَأْسَ بِالرُّقَى مَا لَمْ يَكُنْ فِيهِ شِرْكٌ",
+         "en": "There is no harm in ruqya as long as it contains no shirk.",
+         "sw": "Hakuna ubaya katika ruqyah ilimradi haina shirki."},
+        {"book": "muslim", "n": "2230", "ar": "مَنْ أَتَى عَرَّافًا فَسَأَلَهُ عَنْ شَيْءٍ لَمْ تُقْبَلْ لَهُ صَلاَةٌ أَرْبَعِينَ لَيْلَةً",
+         "en": "Whoever goes to a fortune teller and asks him about anything, his prayer will not be accepted for forty nights.",
+         "sw": "Atakayemwendea mtabiri na kumuuliza kuhusu jambo lolote, swala yake haitakubaliwa kwa siku arobaini."}
+      ]
+    },
+    {
+      "id": "medicine", "icon": "medical",
+      "title": {"en": "Ruqya and medicine", "sw": "Ruqyah na matibabu"},
+      "body": {
+        "en": [
+          "Islam tells us to seek treatment. Ruqya and medicine go together; one does not cancel the other.",
+          "Do not stop hospital treatment or prescribed medicine because of ruqya. Illnesses of the mind are illnesses like any other and deserve proper care.",
+          "The Prophet also spoke about remedies such as honey and black seed.",
+          "If symptoms continue or are severe, get a medical assessment as well."
+        ],
+        "sw": [
+          "Uislamu unatuamrisha kutafuta matibabu. Ruqyah na dawa huenda pamoja; kimoja hakifuti kingine.",
+          "Usiache matibabu ya hospitali au dawa ulizoandikiwa kwa sababu ya ruqyah. Maradhi ya akili ni maradhi kama mengine na yanastahili matibabu sahihi.",
+          "Mtume pia alizungumzia tiba kama asali na habbat sawdaa (mbegu nyeusi).",
+          "Ikiwa dalili zinaendelea au ni kali, tafuta tathmini ya kitabibu pia."
+        ]
+      },
+      "evidence": [
+        {"book": "abudawud", "n": "3855", "ar": "تَدَاوَوْا فَإِنَّ اللَّهَ عَزَّ وَجَلَّ لَمْ يَضَعْ دَاءً إِلاَّ وَضَعَ لَهُ دَوَاءً غَيْرَ دَاءٍ وَاحِدٍ الْهَرَمُ",
+         "en": "Seek treatment, for Allah has not created a disease without creating a cure for it, except one disease: old age.",
+         "sw": "Tafuteni matibabu, kwani Allah hakuweka ugonjwa wowote isipokuwa ameweka dawa yake, isipokuwa ugonjwa mmoja: uzee."},
+        {"book": "bukhari", "n": "5684", "ar": "اسْقِهِ عَسَلاً",
+         "en": "Give him honey to drink.",
+         "sw": "Mnyweshe asali."},
+        {"book": "bukhari", "n": "5688", "ar": "فِي الْحَبَّةِ السَّوْدَاءِ شِفَاءٌ مِنْ كُلِّ دَاءٍ إِلاَّ السَّامَ",
+         "en": "In the black seed there is healing for every disease except death.",
+         "sw": "Katika habbat sawdaa kuna ponyo la kila ugonjwa isipokuwa kifo."}
+      ]
+    },
+    {
+      "id": "mistakes", "icon": "check",
+      "title": {"en": "Things to tell apart", "sw": "Mambo ya kutofautisha"},
+      "body": {
+        "en": [
+          "Reciting the Quran and the established supplications is lawful ruqya.",
+          "There is not enough evidence to make 41, 313 or 1,000 repetitions a special Sunnah for the evil eye.",
+          "Vomiting, yawning, feeling hot or certain dreams are not proof of the evil eye.",
+          "Do not accuse anyone of the evil eye without evidence.",
+          "Avoid amulets, talismans, asking jinn for help, and words that are not understood.",
+          "Do not abandon hospital treatment because of ruqya.",
+          "Ruqya is worship and a means of asking for healing; there is no promise of recovery within a fixed time. If symptoms continue or are severe, seek a medical assessment as well. May Allah grant you health and healing."
+        ],
+        "sw": [
+          "Kusoma Qur'an na dua zilizothibiti ni ruqyah ya kisharia.",
+          "Hakuna ushahidi wa kutosha wa kuifanya idadi ya 41, 313 au 1,000 kuwa Sunnah maalumu ya kijicho.",
+          "Kutapika, kupiga miayo, kuhisi joto au kuota ndoto fulani si uthibitisho wa kijicho.",
+          "Usimtuhumu mtu kwa kijicho bila ushahidi.",
+          "Epuka hirizi, talasimu, kuomba msaada wa majini na maneno yasiyoeleweka.",
+          "Usiache matibabu ya hospitali kwa sababu ya ruqyah.",
+          "Ruqyah ni ibada na sababu ya kuomba uponyaji; hakuna ahadi ya kupona ndani ya muda maalumu. Ikiwa dalili zinaendelea au ni kali, tafuta tathmini ya kitabibu pia. Allah akupe afya na uponyaji."
+        ]
+      },
+      "evidence": []
+    },
+    {
+      "id": "tawakkul", "icon": "heart",
+      "title": {"en": "Relying on Allah", "sw": "Kumtegemea Allah"},
+      "body": {
+        "en": [
+          "The Prophet described seventy thousand of his nation who will enter Paradise without reckoning: those who do not ask others for ruqya, do not take bad omens, do not seek cauterisation, and rely upon their Lord.",
+          "This praises complete reliance on Allah. Scholars explained that reciting over yourself and your family does not go against it: the Prophet recited over himself, and reciting for others is a kindness. Asking someone for ruqya also remains permissible.",
+          "Whatever you do, let your heart rely on Allah alone. The words are a means; the Healer is Allah."
+        ],
+        "sw": [
+          "Mtume aliwaeleza watu elfu sabini wa umma wake watakaoingia Peponi bila hesabu: wale wasioomba wengine wawasomee ruqyah, wasiotabiri mikosi, wasiotaka kuchomwa (kwa moto kama tiba), na wanaomtegemea Mola wao.",
+          "Hii ni sifa ya kumtegemea Allah kikamilifu. Wanachuoni walieleza kwamba kujisomea mwenyewe na kuisomea familia yako hakupingani na hilo: Mtume alijisomea mwenyewe, na kumsomea mwingine ni wema. Kumwomba mtu akusomee ruqyah pia kunabaki kuwa halali.",
+          "Chochote utakachofanya, moyo wako umtegemee Allah peke yake. Maneno ni sababu tu; Mponyaji ni Allah."
+        ]
+      },
+      "evidence": [
+        {"book": "bukhari", "n": "5705", "ar": "هُمُ الَّذِينَ لاَ يَسْتَرْقُونَ، وَلاَ يَتَطَيَّرُونَ، وَلاَ يَكْتَوُونَ وَعَلَى رَبِّهِمْ يَتَوَكَّلُونَ",
+         "en": "They are those who do not ask for ruqya, do not take bad omens, do not seek cauterisation, and rely upon their Lord.",
+         "sw": "Wao ni wale wasioomba kusomewa ruqyah, wasiotabiri mikosi, wasiotaka kuchomwa, na wanaomtegemea Mola wao."},
+        {"book": "bukhari", "n": "5016", "ar": "كَانَ إِذَا اشْتَكَى يَقْرَأُ عَلَى نَفْسِهِ بِالْمُعَوِّذَاتِ وَيَنْفُثُ",
+         "en": "When he was ill, he would recite the Mu'awwidhat over himself and blow.",
+         "sw": "Alipokuwa mgonjwa, alikuwa akijisomea Al-Mu'awwidhat na kupuliza."}
+      ]
+    }
+  ]
+}

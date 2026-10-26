@@ -1,0 +1,171 @@
+<resources>
+    <string name="tab_home">Nyumbani</string>
+    <string name="tab_ruqya">Ruqyah</string>
+    <string name="tab_duas">Dua</string>
+    <string name="tab_names">Majina</string>
+    <string name="tab_learn">Jifunze</string>
+
+    <string name="back">Rudi</string>
+    <string name="close">Funga</string>
+    <string name="cancel">Ghairi</string>
+    <string name="done">Nimemaliza</string>
+    <string name="next">Endelea</string>
+    <string name="previous">Iliyotangulia</string>
+    <string name="finish">Maliza</string>
+    <string name="settings">Mipangilio</string>
+    <string name="copy">Nakili</string>
+    <string name="copied">Imenakiliwa</string>
+    <string name="share">Shiriki</string>
+    <string name="turn_on">Washa</string>
+    <string name="not_now">Si sasa</string>
+    <string name="read_more">Soma zaidi</string>
+    <string name="show_less">Punguza</string>
+
+    <!-- Home -->
+    <string name="start_ruqya">Anza ruqyah</string>
+    <string name="today">Leo</string>
+    <string name="done_today">Umemaliza leo</string>
+    <string name="reminder_verse">Ukumbusho</string>
+    <string name="explore">Gundua zaidi</string>
+    <string name="names_count">Majina 99, pamoja na vyanzo vyake</string>
+    <string name="learn_short">Ruqyah kwa njia ya Sunnah</string>
+    <string name="reminders_card_title">Vikumbusho vya kila siku</string>
+    <string name="reminders_card_text">Ukumbusho mpole wa kinga ya asubuhi, jioni na kabla ya kulala.</string>
+    <plurals name="days_in_a_row">
+        <item quantity="one">Siku %d mfululizo</item>
+        <item quantity="other">Siku %d mfululizo</item>
+    </plurals>
+    <plurals name="steps">
+        <item quantity="one">Hatua %d</item>
+        <item quantity="other">Hatua %d</item>
+    </plurals>
+
+    <!-- Audio -->
+    <string name="audio_title">Sikiliza bila intaneti</string>
+    <string name="audio_text">Pakua kisomo cha Mishary Rashid Alafasy mara moja (takriban MB 12) na usikilize bila intaneti.</string>
+    <string name="audio_progress">Inapakua aya %1$d kati ya %2$d</string>
+    <string name="audio_waiting">Inasubiri muunganisho wa intaneti</string>
+    <string name="audio_ready">Kisomo kimepakuliwa (MB %.1f). Kinafanya kazi bila intaneti.</string>
+    <string name="audio_failed">Upakuaji umesimama. Angalia muunganisho wako kisha ujaribu tena.</string>
+    <string name="audio_download">Pakua kisomo</string>
+    <string name="audio_delete">Futa kisomo</string>
+    <string name="audio_ask">Kisomo bado hakipo kwenye simu hii. Kipakue mara moja (takriban MB 12) ili usikilize bila intaneti?</string>
+
+    <!-- Ruqya tab and sessions -->
+    <string name="ruqya_subtitle">Soma hatua kwa hatua, kwa utulivu</string>
+    <string name="daily_protection">Kinga ya kila siku</string>
+    <string name="last_done">mara ya mwisho %s</string>
+    <string name="step_of">Hatua %1$d kati ya %2$d</string>
+    <string name="finished">Umemaliza</string>
+    <string name="kind_quran">Qur\'an</string>
+    <string name="kind_dua">Dua</string>
+    <string name="kind_action">Cha kufanya</string>
+    <plurals name="times">
+        <item quantity="one">mara moja</item>
+        <item quantity="other">mara %d</item>
+    </plurals>
+    <plurals name="say_times">
+        <item quantity="one">Sema mara moja</item>
+        <item quantity="other">Sema mara %d</item>
+    </plurals>
+    <plurals name="read_times">
+        <item quantity="one">Soma mara moja</item>
+        <item quantity="other">Soma mara %d</item>
+    </plurals>
+    <plurals name="do_times">
+        <item quantity="one">Fanya mara moja</item>
+        <item quantity="other">Fanya mara %d</item>
+    </plurals>
+    <plurals name="times_done">
+        <item quantity="one">Imesomwa mara moja</item>
+        <item quantity="other">Imesomwa mara %d</item>
+    </plurals>
+    <string name="quran_ref">Qur\'an %s</string>
+    <string name="listen">Sikiliza</string>
+    <string name="pause">Simamisha</string>
+    <string name="finish_title">Umemaliza</string>
+    <string name="finish_text">%s imekamilika. Allah akupe uponyaji, kinga na afya njema.</string>
+
+    <!-- Duas, learn, names -->
+    <string name="duas_subtitle">Kutoka katika Sunnah, kila moja na chanzo chake</string>
+    <string name="learn_subtitle">Ruqyah ni nini, na mambo ya kuepuka</string>
+    <string name="evidence">Ushahidi</string>
+    <string name="names_title">Majina ya Allah</string>
+    <string name="names_subtitle">Majina 99 aliyoyakusanya Ibn Uthaymeen kutoka katika Qur\'an na Sunnah</string>
+    <string name="names_search">Tafuta jina au maana</string>
+    <string name="names_weak">Orodha maarufu inatoka katika %1$s, yenye daraja la %2$s.</string>
+    <string name="name_number">JINA LA %d KATI YA 99</string>
+    <string name="name_source">LIMETOKA WAPI</string>
+    <string name="name_from_sunnah">Jina hili limetoka katika Sunnah ya Mtume.</string>
+
+    <string name="translation_question">Ungependa tafsiri ipi?</string>
+    <string name="translation_question_text">Maana itaonyeshwa chini ya kila aya na kila dua.</string>
+    <string name="translation_change_later">Unaweza kubadilisha hili baadaye katika Mipangilio.</string>
+
+    <!-- Settings -->
+    <string name="reading">Usomaji</string>
+    <string name="language">Lugha</string>
+    <string name="translation">Maana inayoonyeshwa</string>
+    <string name="translation_auto">Sawa na lugha ya programu</string>
+    <string name="translation_en">Kiingereza (Sahih International)</string>
+    <string name="translation_sw">Kiswahili (Al-Barwani)</string>
+    <string name="translation_both">Kiingereza na Kiswahili</string>
+    <string name="translation_off">Kiarabu peke yake</string>
+    <string name="transliteration">Matamshi</string>
+    <string name="transliteration_hint">Kiarabu kwa herufi za Kilatini, kusaidia matamshi</string>
+    <string name="arabic_font">Hati ya Kiarabu</string>
+    <string name="font_madinah">Msahafu wa Madina (King Fahd Complex)</string>
+    <string name="font_amiri">Amiri Quran</string>
+    <string name="font_scheherazade">Scheherazade</string>
+    <string name="font_naskh">Noto Naskh</string>
+    <string name="arabic_size">Ukubwa wa maandishi ya Kiarabu</string>
+    <string name="recitation">Kisomo</string>
+    <string name="auto_play">Cheza moja kwa moja</string>
+    <string name="auto_play_hint">Anza kisomo hatua ya Qur\'an inapofunguka</string>
+    <string name="reminders">Vikumbusho</string>
+    <string name="at_time">saa %s</string>
+    <string name="display">Mwonekano</string>
+    <string name="theme">Mandhari</string>
+    <string name="theme_system">Fuata simu</string>
+    <string name="theme_light">Mwanga</string>
+    <string name="theme_dark">Giza</string>
+    <string name="keep_screen_on">Skrini ibaki imewaka</string>
+    <string name="keep_screen_on_hint">Wakati unasoma ruqyah</string>
+
+    <!-- Reminders -->
+    <string name="channel_reminders">Vikumbusho vya kila siku</string>
+    <string name="channel_reminders_desc">Kinga ya asubuhi, jioni na kabla ya kulala</string>
+    <string name="remind_morning_title">Kinga ya asubuhi</string>
+    <string name="remind_morning_text">Al-Ikhlas, Al-Falaq na An-Naas mara tatu, na dua za asubuhi.</string>
+    <string name="remind_evening_title">Kinga ya jioni</string>
+    <string name="remind_evening_text">Al-Ikhlas, Al-Falaq na An-Naas mara tatu, na dua za jioni.</string>
+    <string name="remind_bedtime_title">Kabla ya kulala</string>
+    <string name="remind_bedtime_text">Ayatul-Kursiy, mwisho wa Al-Baqarah, kisha penga viganjani na ujipanguse.</string>
+
+    <!-- About -->
+    <string name="about_sources">Kuhusu na vyanzo</string>
+    <string name="about_sources_short">Kila andiko limetoka wapi na lilivyothibitishwa</string>
+    <string name="about_checked_title">Jinsi maandishi yalivyothibitishwa</string>
+    <string name="about_checked">Hakuna andiko la Qur\'an wala hadith katika programu hii lililoandikwa kwa mkono. Kila aya imetoka katika maandishi ya Uthmani ya Tanzil na katika maandishi ya King Fahd Complex (Madina), na mawili hayo yalilinganishwa herufi kwa herufi, kisha tena na quran.com. Kila dua na hadith iliyonukuliwa ililinganishwa neno kwa neno na riwaya inayoitaja, na ikathibitishwa katika sunnah.com. Majina 99 yalilinganishwa na orodha ya Ibn Uthaymeen na aya au hadith ambamo kila jina limetoka.</string>
+    <string name="src_tanzil_title">Maandishi ya Qur\'an: Tanzil</string>
+    <string name="src_tanzil">Maandishi ya Uthmani, yametumika bila kubadilishwa kwa hati za Amiri, Scheherazade na Noto. tanzil.net</string>
+    <string name="src_kfgqpc_title">Maandishi na hati ya Qur\'an: King Fahd Complex, Madina</string>
+    <string name="src_kfgqpc">Maandishi na hati ya Uthmanic Hafs (toleo la 18), kama katika Msahafu wa Madina.</string>
+    <string name="src_translations_title">Tafsiri</string>
+    <string name="src_translations">Kiingereza: Sahih International. Kiswahili: Sheikh Ali Muhsin Al-Barwani. Kupitia tanzil.net.</string>
+    <string name="src_translit_title">Matamshi</string>
+    <string name="src_translit">Matamshi ya aya kutoka tanzil.net (herufi zinazoandikwa lakini hazitamkwi zimeachwa).</string>
+    <string name="src_hadith_title">Hadith</string>
+    <string name="src_hadith">Sahih al-Bukhari, Sahih Muslim, Sunan Abi Dawud, Jami\' at-Tirmidhi na Sunan Ibn Majah, kwa namba na madaraja ya sunnah.com.</string>
+    <string name="src_names_title">Majina 99</string>
+    <string name="src_names">Sheikh Muhammad ibn Salih al-Uthaymeen, al-Qawa\'id al-Muthla fi Sifat Allah wa Asma\'ihi al-Husna, kanuni ya sita.</string>
+    <string name="src_audio_title">Kisomo</string>
+    <string name="src_audio">Mishary Rashid Alafasy, aya kwa aya, kutoka everyayah.com.</string>
+    <string name="src_guide_title">Mwongozo wa kijicho</string>
+    <string name="src_guide">Hatua za kijicho zinafuata mwongozo \'Ruqyah sahihi kwa kujitibu na kijicho\' (mwongozo wa kujisomea kwa mujibu wa Qur\'an na Sunnah, kwa ufahamu wa Salafus-Swaalih).</string>
+    <string name="src_fonts_title">Hati</string>
+    <string name="src_fonts">KFGQPC Uthmanic Script Hafs (King Fahd Complex). Amiri Quran, Scheherazade New, Noto Naskh Arabic na Plus Jakarta Sans chini ya leseni ya SIL Open Font.</string>
+    <string name="about_disclaimer_title">Tafadhali zingatia</string>
+    <string name="about_disclaimer">Ruqyah ni ibada na sababu ya kuomba uponyaji; hakuna ahadi ya kupona ndani ya muda maalumu. Haichukui nafasi ya matibabu: ikiwa dalili zinaendelea au ni kali, mwone daktari pia. Programu hii haitambui ugonjwa wowote. Ukiona kosa, tafadhali liripoti ili lirekebishwe.</string>
+    <string name="version">Toleo %s</string>
+</resources>

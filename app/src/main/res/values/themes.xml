@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.Ruqya" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/canvas</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorAccent">@color/green</item>
+    </style>
+</resources>

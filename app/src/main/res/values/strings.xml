@@ -1,0 +1,173 @@
+<resources>
+    <string name="app_name" translatable="false">Ruqya Shariyya</string>
+
+    <string name="tab_home">Home</string>
+    <string name="tab_ruqya">Ruqya</string>
+    <string name="tab_duas">Duas</string>
+    <string name="tab_names">Names</string>
+    <string name="tab_learn">Learn</string>
+
+    <string name="back">Back</string>
+    <string name="close">Close</string>
+    <string name="cancel">Cancel</string>
+    <string name="done">Done</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="finish">Finish</string>
+    <string name="settings">Settings</string>
+    <string name="copy">Copy</string>
+    <string name="copied">Copied</string>
+    <string name="share">Share</string>
+    <string name="turn_on">Turn on</string>
+    <string name="not_now">Not now</string>
+    <string name="read_more">Read more</string>
+    <string name="show_less">Show less</string>
+
+    <!-- Home -->
+    <string name="start_ruqya">Start ruqya</string>
+    <string name="today">Today</string>
+    <string name="done_today">Done today</string>
+    <string name="reminder_verse">A reminder</string>
+    <string name="explore">Explore</string>
+    <string name="names_count">99 names, with their sources</string>
+    <string name="learn_short">Ruqya the way of the Sunnah</string>
+    <string name="reminders_card_title">Daily reminders</string>
+    <string name="reminders_card_text">A gentle reminder for the morning, evening and bedtime protection.</string>
+    <plurals name="days_in_a_row">
+        <item quantity="one">%d day in a row</item>
+        <item quantity="other">%d days in a row</item>
+    </plurals>
+    <plurals name="steps">
+        <item quantity="one">%d step</item>
+        <item quantity="other">%d steps</item>
+    </plurals>
+
+    <!-- Audio -->
+    <string name="audio_title">Listen offline</string>
+    <string name="audio_text">Download the recitation by Mishary Rashid Alafasy once (about 12 MB) and listen without internet.</string>
+    <string name="audio_progress">Downloading %1$d of %2$d verses</string>
+    <string name="audio_waiting">Waiting for an internet connection</string>
+    <string name="audio_ready">Recitation downloaded (%.1f MB). Works offline.</string>
+    <string name="audio_failed">The download stopped. Check your connection and try again.</string>
+    <string name="audio_download">Download recitation</string>
+    <string name="audio_delete">Delete recitation</string>
+    <string name="audio_ask">The recitation is not on this phone yet. Download it once (about 12 MB) to listen offline?</string>
+
+    <!-- Ruqya tab and sessions -->
+    <string name="ruqya_subtitle">Recite step by step, at your own pace</string>
+    <string name="daily_protection">Daily protection</string>
+    <string name="last_done">last done %s</string>
+    <string name="step_of">Step %1$d of %2$d</string>
+    <string name="finished">Finished</string>
+    <string name="kind_quran">Quran</string>
+    <string name="kind_dua">Supplication</string>
+    <string name="kind_action">What to do</string>
+    <plurals name="times">
+        <item quantity="one">once</item>
+        <item quantity="other">%d times</item>
+    </plurals>
+    <plurals name="say_times">
+        <item quantity="one">Say it once</item>
+        <item quantity="other">Say it %d times</item>
+    </plurals>
+    <plurals name="read_times">
+        <item quantity="one">Read once</item>
+        <item quantity="other">Read %d times</item>
+    </plurals>
+    <plurals name="do_times">
+        <item quantity="one">Do it once</item>
+        <item quantity="other">Do it %d times</item>
+    </plurals>
+    <plurals name="times_done">
+        <item quantity="one">Read once so far</item>
+        <item quantity="other">Read %d times so far</item>
+    </plurals>
+    <string name="quran_ref">Quran %s</string>
+    <string name="listen">Listen</string>
+    <string name="pause">Pause</string>
+    <string name="finish_title">You have finished</string>
+    <string name="finish_text">%s is complete. May Allah grant you healing, protection and well-being.</string>
+
+    <!-- Duas, learn, names -->
+    <string name="duas_subtitle">From the Sunnah, each with its source</string>
+    <string name="learn_subtitle">What ruqya is, and what to avoid</string>
+    <string name="evidence">Evidence</string>
+    <string name="names_title">Names of Allah</string>
+    <string name="names_subtitle">The 99 names gathered by Ibn Uthaymeen from the Quran and Sunnah</string>
+    <string name="names_search">Search a name or meaning</string>
+    <string name="names_weak">The well-known list comes from %1$s, graded %2$s.</string>
+    <string name="name_number">NAME %d OF 99</string>
+    <string name="name_source">WHERE IT COMES FROM</string>
+    <string name="name_from_sunnah">This name comes from the Sunnah of the Prophet.</string>
+
+    <string name="translation_question">Which translation would you like?</string>
+    <string name="translation_question_text">The meaning is shown under every verse and supplication.</string>
+    <string name="translation_change_later">You can change this later in Settings.</string>
+
+    <!-- Settings -->
+    <string name="reading">Reading</string>
+    <string name="language">Language</string>
+    <string name="translation">Meaning shown</string>
+    <string name="translation_auto">Same as the app language</string>
+    <string name="translation_en">English (Sahih International)</string>
+    <string name="translation_sw">Kiswahili (Al-Barwani)</string>
+    <string name="translation_both">English and Kiswahili</string>
+    <string name="translation_off">Arabic only</string>
+    <string name="transliteration">Transliteration</string>
+    <string name="transliteration_hint">The Arabic in Latin letters, to help with pronunciation</string>
+    <string name="arabic_font">Arabic font</string>
+    <string name="font_madinah">Madinah Mushaf (King Fahd Complex)</string>
+    <string name="font_amiri">Amiri Quran</string>
+    <string name="font_scheherazade">Scheherazade</string>
+    <string name="font_naskh">Noto Naskh</string>
+    <string name="arabic_size">Arabic text size</string>
+    <string name="recitation">Recitation</string>
+    <string name="auto_play">Play automatically</string>
+    <string name="auto_play_hint">Start the recitation when a Quran step opens</string>
+    <string name="reminders">Reminders</string>
+    <string name="at_time">at %s</string>
+    <string name="display">Display</string>
+    <string name="theme">Theme</string>
+    <string name="theme_system">Follow the phone</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="keep_screen_on">Keep the screen on</string>
+    <string name="keep_screen_on_hint">While you recite a session</string>
+
+    <!-- Reminders -->
+    <string name="channel_reminders">Daily reminders</string>
+    <string name="channel_reminders_desc">Morning, evening and bedtime protection</string>
+    <string name="remind_morning_title">Morning protection</string>
+    <string name="remind_morning_text">Al-Ikhlas, Al-Falaq and An-Nas three times, and the morning supplications.</string>
+    <string name="remind_evening_title">Evening protection</string>
+    <string name="remind_evening_text">Al-Ikhlas, Al-Falaq and An-Nas three times, and the evening supplications.</string>
+    <string name="remind_bedtime_title">Before sleep</string>
+    <string name="remind_bedtime_text">Ayat al-Kursi, the end of Al-Baqarah, then blow into your hands and wipe.</string>
+
+    <!-- About -->
+    <string name="about_sources">About and sources</string>
+    <string name="about_sources_short">Where every text comes from and how it was checked</string>
+    <string name="about_checked_title">How the texts were checked</string>
+    <string name="about_checked">No Quran or hadith text in this app was typed by hand. Every verse comes from the Tanzil Uthmani text and from the King Fahd Complex (Madinah) text, and the two were compared letter by letter, and again with quran.com. Every supplication and quoted hadith was matched word for word with the narration it cites, and checked on sunnah.com. The 99 names were matched with Ibn Uthaymeen\'s list and with the verse or hadith each comes from.</string>
+    <string name="src_tanzil_title">Quran text: Tanzil Project</string>
+    <string name="src_tanzil">Uthmani text, used unchanged for the Amiri, Scheherazade and Noto fonts. tanzil.net</string>
+    <string name="src_kfgqpc_title">Quran text and font: King Fahd Complex, Madinah</string>
+    <string name="src_kfgqpc">Uthmanic Hafs text and font (version 18), as in the Madinah Mushaf.</string>
+    <string name="src_translations_title">Translations</string>
+    <string name="src_translations">English: Sahih International. Kiswahili: Sheikh Ali Muhsin Al-Barwani. Through tanzil.net.</string>
+    <string name="src_translit_title">Transliteration</string>
+    <string name="src_translit">Transliteration of the verses from tanzil.net (letters that are written but not pronounced are left out).</string>
+    <string name="src_hadith_title">Hadith</string>
+    <string name="src_hadith">Sahih al-Bukhari, Sahih Muslim, Sunan Abi Dawud, Jami\' at-Tirmidhi and Sunan Ibn Majah, with the numbering and gradings of sunnah.com.</string>
+    <string name="src_names_title">The 99 names</string>
+    <string name="src_names">Shaykh Muhammad ibn Salih al-Uthaymeen, al-Qawa\'id al-Muthla fi Sifat Allah wa Asma\'ihi al-Husna, rule six.</string>
+    <string name="src_audio_title">Recitation</string>
+    <string name="src_audio">Mishary Rashid Alafasy, verse by verse, from everyayah.com.</string>
+    <string name="src_guide_title">The evil-eye guide</string>
+    <string name="src_guide">The evil-eye session follows the guide \'Ruqyah sahihi kwa kujitibu na kijicho\' (a self-ruqya guide according to the Quran and Sunnah, with the understanding of the Salaf).</string>
+    <string name="src_fonts_title">Fonts</string>
+    <string name="src_fonts">KFGQPC Uthmanic Script Hafs (King Fahd Complex). Amiri Quran, Scheherazade New, Noto Naskh Arabic and Plus Jakarta Sans under the SIL Open Font License.</string>
+    <string name="about_disclaimer_title">Please note</string>
+    <string name="about_disclaimer">Ruqya is worship and a means of asking Allah for healing; there is no promise of recovery within a fixed time. It does not replace medical care: if symptoms continue or are severe, see a doctor too. This app does not diagnose anything. If you find a mistake, please report it so it can be corrected.</string>
+    <string name="version">Version %s</string>
+</resources>
