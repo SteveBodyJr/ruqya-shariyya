@@ -123,6 +123,11 @@
 
     <string name="virtues_title">Fadhila zake</string>
 
+    <string name="howto_title">Namna ya kuifanya</string>
+    <string name="howto_about">Elimu</string>
+    <string name="learn_more">Soma zaidi</string>
+    <string name="start">Anza</string>
+
     <!-- Settings -->
     <string name="reading">Usomaji</string>
     <string name="language">Lugha</string>

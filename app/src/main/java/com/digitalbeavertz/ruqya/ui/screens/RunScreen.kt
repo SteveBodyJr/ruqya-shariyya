@@ -80,6 +80,10 @@ import com.digitalbeavertz.ruqya.ui.components.LocalContainer
 import com.digitalbeavertz.ruqya.ui.components.Meanings
 import com.digitalbeavertz.ruqya.ui.components.Note
 import com.digitalbeavertz.ruqya.ui.components.Sources
+import com.digitalbeavertz.ruqya.ui.components.iconFor
+import com.digitalbeavertz.ruqya.ui.components.StarBadge
+import com.digitalbeavertz.ruqya.ui.components.RCard
+import com.digitalbeavertz.ruqya.ui.components.QuietButton
 import com.digitalbeavertz.ruqya.ui.components.VirtuesCard
 import com.digitalbeavertz.ruqya.ui.components.content
 import com.digitalbeavertz.ruqya.ui.components.lang
@@ -105,7 +109,9 @@ fun RunScreen(nav: NavHostController, id: String) {
     // Routines read the adhkar the person chose (see CustomizeScreen); sessions read every step.
     val steps = session.chosen(if (session.isRoutine) p.chosenSteps(id) else null)
     val stepsNow by rememberUpdatedState(steps)
-    val pager = rememberPagerState { stepsNow.size + 1 }
+    // Sessions open on "how to do it"; then one page per step, then the finish page.
+    val intro = if (session.howTo != null) 1 else 0
+    val pager = rememberPagerState { intro + stepsNow.size + 1 }
     val scope = rememberCoroutineScope()
     val counts = remember { mutableStateMapOf<Int, Int>() }
     var askDownload by remember { mutableStateOf(false) }
@@ -132,10 +138,11 @@ fun RunScreen(nav: NavHostController, id: String) {
     }
 
     val page = pager.currentPage
+    val si = page - intro // the step on screen: -1 on the intro page, steps.size on the finish page
     LaunchedEffect(page) {
-        if (play.key != null && play.key != keyOf(page)) player.stop()
-        if (p.autoPlay && page < steps.size && files(page).all(container.audio::has)) start(page)
-        if (page == steps.size) container.prefs.markDone(session.id)
+        if (play.key != null && play.key != keyOf(si)) player.stop()
+        if (p.autoPlay && si in steps.indices && files(si).all(container.audio::has)) start(si)
+        if (si == steps.size) container.prefs.markDone(session.id)
     }
 
     Column(Modifier.fillMaxSize().background(c.canvas)) {
@@ -145,7 +152,11 @@ fun RunScreen(nav: NavHostController, id: String) {
             Column(Modifier.weight(1f)) {
                 Text(session.title.t(), style = MaterialTheme.typography.titleMedium, color = c.ink)
                 Text(
-                    if (page < steps.size) stringResource(R.string.step_of, page + 1, steps.size) else stringResource(R.string.finished),
+                    when {
+                        si < 0 -> stringResource(R.string.howto_title)
+                        si < steps.size -> stringResource(R.string.step_of, si + 1, steps.size)
+                        else -> stringResource(R.string.finished)
+                    },
                     style = MaterialTheme.typography.bodySmall, color = c.muted,
                 )
             }
@@ -164,16 +175,21 @@ fun RunScreen(nav: NavHostController, id: String) {
             return@Column
         }
         Box(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp).height(4.dp).clip(RoundedCornerShape(50)).background(c.soft)) {
-            Box(Modifier.fillMaxWidth(((page + 1f) / (steps.size + 1f)).coerceIn(0f, 1f)).fillMaxHeight().clip(RoundedCornerShape(50)).background(c.green))
+            Box(Modifier.fillMaxWidth(((si + 1f) / (steps.size + 1f)).coerceIn(0.02f, 1f)).fillMaxHeight().clip(RoundedCornerShape(50)).background(c.green))
         }
 
         HorizontalPager(pager, Modifier.weight(1f), beyondViewportPageCount = 1) { i ->
-            if (i < steps.size) StepPage(steps[i], if (play.key == keyOf(i)) play.file else null) else FinishPage(session) { nav.popBackStack() }
+            val k = i - intro
+            when {
+                k < 0 -> HowToPage(session, nav) { scope.launch { pager.animateScrollToPage(intro) } }
+                k < steps.size -> StepPage(steps[k], if (play.key == keyOf(k)) play.file else null)
+                else -> FinishPage(session) { nav.popBackStack() }
+            }
         }
 
-        if (page < steps.size) {
-            val step = steps[page]
-            val done = counts[page] ?: 0
+        if (si in steps.indices) {
+            val step = steps[si]
+            val done = counts[si] ?: 0
             val haptics = LocalHapticFeedback.current
             Row(
                 Modifier.fillMaxWidth().navigationBarsPadding().padding(horizontal = 16.dp, vertical = 12.dp),
@@ -184,8 +200,8 @@ fun RunScreen(nav: NavHostController, id: String) {
                 }
                 Spacer(Modifier.width(10.dp))
                 Row(Modifier.weight(1f), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.CenterVertically) {
-                    if (files(page).isNotEmpty()) {
-                        val playing = play.key == keyOf(page) && play.playing
+                    if (files(si).isNotEmpty()) {
+                        val playing = play.key == keyOf(si) && play.playing
                         RoundButton(
                             if (playing) Icons.Rounded.Pause else Icons.Rounded.PlayArrow,
                             stringResource(if (playing) R.string.pause else R.string.listen),
@@ -193,8 +209,8 @@ fun RunScreen(nav: NavHostController, id: String) {
                         ) {
                             when {
                                 playing -> player.pause()
-                                play.key == keyOf(page) -> player.resume()
-                                else -> start(page)
+                                play.key == keyOf(si) -> player.resume()
+                                else -> start(si)
                             }
                         }
                         Spacer(Modifier.width(10.dp))
@@ -202,16 +218,16 @@ fun RunScreen(nav: NavHostController, id: String) {
                     // Every step shows its count, even a single reading, so each one can be ticked off.
                     Counter(done, step.count) {
                         if (done < step.count) {
-                            counts[page] = done + 1
+                            counts[si] = done + 1
                             haptics.performHapticFeedback(HapticFeedbackType.LongPress)
                         } else {
-                            counts[page] = 0
+                            counts[si] = 0
                         }
                     }
                 }
                 Spacer(Modifier.width(10.dp))
                 GreenButton(
-                    stringResource(if (page == steps.size - 1) R.string.finish else R.string.next),
+                    stringResource(if (si == steps.size - 1) R.string.finish else R.string.next),
                     icon = Icons.AutoMirrored.Rounded.ArrowForward, iconAfter = true,
                 ) { scope.launch { pager.animateScrollToPage(page + 1) } }
             }
@@ -340,6 +356,48 @@ fun PassageText(passage: Passage, compact: Boolean = false, playingFile: String?
             Meanings(a.translit) { a.meaning(it) }
         }
         if (i < passage.ayahs.lastIndex && !active) HorizontalDivider(Modifier.padding(vertical = 6.dp), color = c.line)
+    }
+}
+
+/** "Namna ya kuifanya": what it is, numbered steps, a link to the article, and Start. */
+@Composable
+private fun HowToPage(session: Session, nav: NavHostController, onStart: () -> Unit) {
+    val c = RT.colors
+    val l = lang()
+    val h = session.howTo ?: return
+    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 12.dp)) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            IconBadge(iconFor(session.icon), 48.dp)
+            Spacer(Modifier.width(12.dp))
+            Column {
+                Text(session.title.t(), style = MaterialTheme.typography.headlineSmall, color = c.ink)
+                Text(session.subtitle.t(), style = MaterialTheme.typography.bodySmall, color = c.muted)
+            }
+        }
+        Spacer(Modifier.height(18.dp))
+        RCard(fill = c.greenSoft) {
+            Text(stringResource(R.string.howto_about), style = MaterialTheme.typography.titleSmall, color = c.onGreenSoft)
+            Spacer(Modifier.height(6.dp))
+            Text(h.about[l], style = MaterialTheme.typography.bodyLarge, color = c.onGreenSoft)
+        }
+        Spacer(Modifier.height(18.dp))
+        Text(stringResource(R.string.howto_title), style = MaterialTheme.typography.titleMedium, color = c.ink)
+        Spacer(Modifier.height(8.dp))
+        h.steps(l).forEachIndexed { n, text ->
+            Row(Modifier.padding(vertical = 6.dp), verticalAlignment = Alignment.Top) {
+                StarBadge("${n + 1}", 32.dp)
+                Spacer(Modifier.width(10.dp))
+                Text(text, style = MaterialTheme.typography.bodyLarge, color = c.ink, modifier = Modifier.padding(top = 4.dp))
+            }
+        }
+        Spacer(Modifier.height(18.dp))
+        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+            h.article?.let { a ->
+                QuietButton(stringResource(R.string.learn_more), Modifier.weight(1f)) { nav.navigate("article/$a") }
+            }
+            GreenButton(stringResource(R.string.start), Modifier.weight(1f), icon = Icons.AutoMirrored.Rounded.ArrowForward, iconAfter = true, onClick = onStart)
+        }
+        Spacer(Modifier.navigationBarsPadding().height(24.dp))
     }
 }
 

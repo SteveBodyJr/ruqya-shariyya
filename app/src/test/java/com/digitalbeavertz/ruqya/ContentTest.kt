@@ -2,6 +2,7 @@ package com.digitalbeavertz.ruqya
 
 import com.digitalbeavertz.ruqya.core.playlist
 import com.digitalbeavertz.ruqya.data.Content
+import com.digitalbeavertz.ruqya.data.Evidence
 import com.digitalbeavertz.ruqya.data.Step
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -13,7 +14,7 @@ class ContentTest {
     private val content = Content.parse(File("src/main/assets/ruqya.json").readText())
 
     @Test fun sessionsAndRoutinesResolve() {
-        assertEquals(listOf("eye", "full", "sihr", "jinn", "sick", "distress", "family"), content.sessions.map { it.id })
+        assertEquals(listOf("eye", "husda", "full", "sihr", "jinn", "sick", "distress", "family"), content.sessions.map { it.id })
         assertEquals(listOf("morning", "evening", "bedtime"), content.routines.map { it.id })
         (content.sessions + content.routines).forEach { s -> assertTrue(s.id, s.steps.isNotEmpty()) }
     }
@@ -105,6 +106,26 @@ class ContentTest {
         // The Quls carry both: 'they suffice you' (Abu Dawud 5082) and their own merit.
         val ikhlas = content.session("morning")!!.steps.first { it.key == "p:ikhlas" }
         assertEquals(listOf("5082", "5013"), ikhlas.virtues.map { it.source.n })
+    }
+
+    @Test fun husdaSessionAndArticle() {
+        val husda = content.session("husda")!!
+        val keys = husda.steps.map { it.key }
+        // Al-Falaq ends with refuge from the envier; Jibril's ruqya names the envier's eye.
+        assertTrue("p:falaq" in keys && "d:jibril" in keys && "d:children" in keys)
+        assertEquals("husda", husda.howTo!!.article)
+        val article = content.article("husda")!!
+        assertTrue(article.evidence.any { it is Evidence.Quran && it.passage.ayahs.single().key == "113:5" })
+        assertEquals(article.bodyEn.size, article.bodySw.size)
+    }
+
+    @Test fun everySessionExplainsHowToDoIt() {
+        content.sessions.forEach { s ->
+            val h = s.howTo
+            assertTrue("${s.id} has no how-to", h != null && h.stepsEn.isNotEmpty())
+            assertEquals(s.id, h!!.stepsEn.size, h.stepsSw.size)
+            h.article?.let { assertTrue("${s.id}: unknown article $it", content.article(it) != null) }
+        }
     }
 
     @Test fun gradesShownForSunanCollections() {

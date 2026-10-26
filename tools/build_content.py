@@ -233,8 +233,12 @@ def main():
                 check(f"article {art['id']}", ev, ev["ar"])
                 ev["grade"] = ev.get("grade")
 
-    # The audio pack covers the recited passages only (not the verses the names come from).
-    audio = sorted({f"{int(k.split(':')[0]):03d}{int(k.split(':')[1]):03d}" for k in ayahs})
+    # The audio pack covers only the verses that sessions and routines recite (not the verses shown as
+    # evidence or the ones the names come from).
+    recited = {st["passage"] for g in ("sessions", "routines") for x in content[g] for st in x["steps"] if "passage" in st}
+    recited |= {pid for a in content["actions"].values() for pid in a.get("passages", [])}
+    audio = sorted({f"{s:03d}{a:03d}" for p in content["passages"] if p["id"] in recited
+                    for s, a1, a2 in p["ranges"] for a in range(a1, a2 + 1)})
     audio += ["bismillah", "audhubillah"]
 
     # ---- The 99 names (Ibn Uthaymeen, al-Qawa'id al-Muthla)

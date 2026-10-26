@@ -125,6 +125,11 @@
 
     <string name="virtues_title">Its virtues</string>
 
+    <string name="howto_title">How to do it</string>
+    <string name="howto_about">What it is</string>
+    <string name="learn_more">Learn more</string>
+    <string name="start">Start</string>
+
     <!-- Settings -->
     <string name="reading">Reading</string>
     <string name="language">Language</string>

@@ -28,6 +28,7 @@ import androidx.compose.material.icons.rounded.Bedtime
 import androidx.compose.material.icons.rounded.Block
 import androidx.compose.material.icons.rounded.CheckCircle
 import androidx.compose.material.icons.rounded.FamilyRestroom
+import androidx.compose.material.icons.rounded.HeartBroken
 import androidx.compose.material.icons.rounded.Favorite
 import androidx.compose.material.icons.rounded.Info
 import androidx.compose.material.icons.rounded.LocalHospital
@@ -112,6 +113,7 @@ fun iconFor(name: String): ImageVector = when (name) {
     "block" -> Icons.Rounded.Block
     "medical" -> Icons.Rounded.LocalHospital
     "check" -> Icons.Rounded.CheckCircle
+    "envy" -> Icons.Rounded.HeartBroken
     else -> Icons.Rounded.Info
 }
 

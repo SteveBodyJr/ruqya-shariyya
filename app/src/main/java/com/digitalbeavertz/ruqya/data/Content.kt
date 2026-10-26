@@ -94,9 +94,14 @@ sealed class Step {
     }
 }
 
+/** "Namna ya kuifanya": what it is (elimu) and the steps, shown before a session starts. */
+data class HowTo(val about: Txt, val stepsEn: List<String>, val stepsSw: List<String>, val article: String?) {
+    fun steps(lang: Lang) = if (lang == Lang.SW) stepsSw else stepsEn
+}
+
 data class Session(
     val id: String, val icon: String, val title: Txt, val subtitle: Txt,
-    val steps: List<Step>, val isRoutine: Boolean,
+    val steps: List<Step>, val isRoutine: Boolean, val howTo: HowTo? = null,
 ) {
     /** The steps to read: the person's choice for a routine, else every step that is not optional. */
     fun chosen(keys: Set<String>?): List<Step> = steps.filter { if (keys != null) it.key in keys else !it.optional }
@@ -227,6 +232,10 @@ class Content(
                 Session(
                     s.getString("id"), s.getString("icon"), txt(s.getJSONObject("title"))!!, txt(s.getJSONObject("subtitle"))!!,
                     s.getJSONArray("steps").objects().map(::step), routine,
+                    s.optJSONObject("howto")?.let { h ->
+                        val st = h.getJSONObject("steps")
+                        HowTo(txt(h.getJSONObject("about"))!!, st.getJSONArray("en").strings(), st.getJSONArray("sw").strings(), h.optString("article").ifEmpty { null })
+                    },
                 )
             }
 
