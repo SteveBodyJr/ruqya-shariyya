@@ -120,6 +120,8 @@ def main():
 
     def grade(src):
         b, n = src["book"], src["n"]
+        if src.get("grade"):
+            return src["grade"]  # given by hand where the edition has none (e.g. at-Tirmidhi's own grading)
         if b in ("bukhari", "muslim"):
             return {"en": "Sahih", "sw": "Sahih"}
         for h in books[b].get(n, []):
@@ -143,11 +145,34 @@ def main():
             refs[f"{b}:{n}"].append(ar)
         src["grade"] = grade(src)
 
+    by_id = {d["id"]: d for d in content["duas"]}
     for d in content["duas"]:
+        where = f"dua {d['id']}"
         # The first source holds the exact wording; the others are listed as further references.
-        check(f"dua {d['id']}", d["src"][0], d["ar"])
+        if "parts" in d:
+            # A narrator's aside interrupts the wording: each part must be in the hadith, and together
+            # they must be exactly the text shown.
+            parts = d.pop("parts")
+            for part in parts:
+                check(where, d["src"][0], part)
+            if norm(d["ar"]).replace(" ", "") != "".join(norm(x).replace(" ", "") for x in parts):
+                errors.append(f"{where}: the parts do not make up the text")
+        elif "derived" in d:
+            # The hadith gives one wording and says the other time of day is the same with named words
+            # changed (e.g. 'asbahna' for 'amsayna'): check exactly those changes and nothing else.
+            dv = d.pop("derived")
+            base = by_id[dv["from"]]["ar"]
+            for old, new in dv["replace"]:
+                if old not in base:
+                    errors.append(f"{where}: '{old}' is not in {dv['from']}")
+                base = base.replace(old, new)
+            if base != d["ar"]:
+                errors.append(f"{where}: is not {dv['from']} with the listed changes")
+            check(where, d["src"][0], dv["says"])
+        else:
+            check(where, d["src"][0], d["ar"])
         for s in d["src"][1:]:
-            check(f"dua {d['id']}", s)
+            check(where, s)
         d.setdefault("count", 1)
     for k, a in content["actions"].items():
         for s in a.get("src", []):

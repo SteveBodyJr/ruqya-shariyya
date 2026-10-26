@@ -106,6 +106,18 @@ class Prefs(context: Context) {
         get() = sp.getBoolean("dismissedReminderCard", false)
         set(v) { sp.edit { putBoolean("dismissedReminderCard", v) }; bump() }
 
+    // ---- Which adhkar the person reads in each routine
+
+    /** The step keys chosen for a routine, or null while the person has not changed the defaults. */
+    fun chosenSteps(routineId: String): Set<String>? = sp.getString("steps_$routineId", null)?.let { s ->
+        runCatching { JSONArray(s).let { a -> (0 until a.length()).map { a.getString(it) }.toSet() } }.getOrNull()
+    }
+
+    fun setChosenSteps(routineId: String, keys: Set<String>?) {
+        sp.edit { if (keys == null) remove("steps_$routineId") else putString("steps_$routineId", JSONArray(keys.toList()).toString()) }
+        bump()
+    }
+
     // ---- Progress
     /** The last day each routine or session was finished (ISO date). */
     fun lastDone(id: String): LocalDate? = sp.getString("done_$id", null)?.let { runCatching { LocalDate.parse(it) }.getOrNull() }

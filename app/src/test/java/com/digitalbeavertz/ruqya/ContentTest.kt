@@ -72,6 +72,30 @@ class ContentTest {
         assertTrue(kursi.tanzil.startsWith("ٱللَّهُ"))
     }
 
+    @Test fun routinesStartWithTheRecommendedAdhkar() {
+        val morning = content.session("morning")!!
+        val optional = morning.steps.filter { it.optional }.map { it.key }
+        assertEquals(listOf("d:subhanallah_100", "d:tahlil_100", "d:istighfar_100"), optional)
+        // Nothing chosen yet: everything except the 100-times adhkar.
+        assertEquals(morning.steps.size - 3, morning.chosen(null).size)
+        // The person's choice wins, in the routine's order.
+        assertEquals(listOf("d:sayyid_istighfar", "d:tahlil_100"), morning.chosen(setOf("d:tahlil_100", "d:sayyid_istighfar")).map { it.key })
+        // Sessions are never filtered.
+        assertEquals(content.session("eye")!!.steps, content.session("eye")!!.chosen(null))
+    }
+
+    @Test fun stepKeysAreUniqueWithinEachRoutine() {
+        content.routines.forEach { r -> assertEquals(r.id, r.steps.size, r.steps.map { it.key }.toSet().size) }
+    }
+
+    @Test fun morningAndEveningWordingDiffer() {
+        assertTrue(content.dua("asbahna_mulk")!!.ar.startsWith("أَصْبَحْنَا"))
+        assertTrue(content.dua("amsayna_mulk")!!.ar.startsWith("أَمْسَيْنَا"))
+        val evening = content.session("evening")!!.steps.map { it.key }
+        assertTrue("d:amsayna_mulk" in evening && "d:asbahna_mulk" !in evening)
+        assertEquals(3, content.session("evening")!!.steps.first { it.key == "d:kalimat" }.count)
+    }
+
     @Test fun gradesShownForSunanCollections() {
         val visit = content.dua("visit")!!.sources.first()
         assertEquals("abudawud", visit.book)

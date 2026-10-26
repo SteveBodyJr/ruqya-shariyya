@@ -58,22 +58,32 @@ sealed class Step {
     abstract val sources: List<Source>
     abstract val note: Txt?
     abstract val title: Txt
+    /** Off by default in a routine until the person chooses it (the 100-times adhkar). */
+    abstract val optional: Boolean
+    /** Stable within a session: "p:ikhlas", "d:sayyid_istighfar", "a:wipe". Saved in the person's choices. */
+    abstract val key: String
 
-    data class Recite(val passage: Passage, override val count: Int, override val sources: List<Source>, override val note: Txt?) : Step() {
+    data class Recite(val passage: Passage, override val count: Int, override val sources: List<Source>, override val note: Txt?, override val optional: Boolean = false) : Step() {
         override val title get() = passage.name
+        override val key get() = "p:${passage.id}"
     }
-    data class Say(val dua: Dua, override val count: Int, override val sources: List<Source>, override val note: Txt?) : Step() {
+    data class Say(val dua: Dua, override val count: Int, override val sources: List<Source>, override val note: Txt?, override val optional: Boolean = false) : Step() {
         override val title get() = dua.title
+        override val key get() = "d:${dua.id}"
     }
-    data class Do(val action: Action, override val count: Int, override val sources: List<Source>, override val note: Txt?) : Step() {
+    data class Do(val action: Action, override val count: Int, override val sources: List<Source>, override val note: Txt?, override val optional: Boolean = false) : Step() {
         override val title get() = action.title
+        override val key get() = "a:${action.id}"
     }
 }
 
 data class Session(
     val id: String, val icon: String, val title: Txt, val subtitle: Txt,
     val steps: List<Step>, val isRoutine: Boolean,
-)
+) {
+    /** The steps to read: the person's choice for a routine, else every step that is not optional. */
+    fun chosen(keys: Set<String>?): List<Step> = steps.filter { if (keys != null) it.key in keys else !it.optional }
+}
 
 sealed class Evidence {
     data class Quran(val passage: Passage) : Evidence()
@@ -178,13 +188,14 @@ class Content(
                 val src = o.optJSONArray("src")?.let(::sources)
                 val note = txt(o.optJSONObject("note"))
                 val count = if (o.has("count")) o.getInt("count") else null
+                val optional = o.optBoolean("optional", false)
                 return when {
-                    o.has("passage") -> Step.Recite(passages.getValue(o.getString("passage")), count ?: 1, src.orEmpty(), note)
+                    o.has("passage") -> Step.Recite(passages.getValue(o.getString("passage")), count ?: 1, src.orEmpty(), note, optional)
                     o.has("dua") -> duaById.getValue(o.getString("dua")).let { d ->
-                        Step.Say(d, count ?: d.count, src ?: d.sources, note ?: d.note)
+                        Step.Say(d, count ?: d.count, src ?: d.sources, note ?: d.note, optional)
                     }
                     o.has("action") -> actions.getValue(o.getString("action")).let { a ->
-                        Step.Do(a, count ?: a.count, src ?: a.sources, note)
+                        Step.Do(a, count ?: a.count, src ?: a.sources, note, optional)
                     }
                     else -> error("step without passage, dua or action: $o")
                 }

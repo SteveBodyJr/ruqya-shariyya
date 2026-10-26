@@ -102,6 +102,25 @@
     <string name="translation_question_text">Maana itaonyeshwa chini ya kila aya na kila dua.</string>
     <string name="translation_change_later">Unaweza kubadilisha hili baadaye katika Mipangilio.</string>
 
+    <string name="tile_morning">Asubuhi</string>
+    <string name="tile_evening">Jioni</string>
+    <string name="schedule_today">Adhkar za leo</string>
+    <string name="choose_adhkar">Chagua adhkar</string>
+    <string name="guidance">Mwongozo</string>
+    <string name="see_all">Ona zote</string>
+    <string name="next_in">%1$s baada ya %2$s</string>
+    <plurals name="adhkar_count">
+        <item quantity="one">kipengele %d</item>
+        <item quantity="other">vipengele %d</item>
+    </plurals>
+    <string name="customize_title">Chagua adhkar zako</string>
+    <string name="customize_subtitle">Weka alama kwa unazotaka kusoma kila siku</string>
+    <string name="chosen_of">Umechagua %1$d kati ya %2$d</string>
+    <string name="optional_label">hiari</string>
+    <string name="select_all">Chagua zote</string>
+    <string name="reset_recommended">Zilizopendekezwa</string>
+    <string name="none_chosen">Bado hujachagua chochote kwa ratiba hii.</string>
+
     <!-- Settings -->
     <string name="reading">Usomaji</string>
     <string name="language">Lugha</string>
@@ -135,10 +154,10 @@
     <!-- Reminders -->
     <string name="channel_reminders">Vikumbusho vya kila siku</string>
     <string name="channel_reminders_desc">Kinga ya asubuhi, jioni na kabla ya kulala</string>
-    <string name="remind_morning_title">Kinga ya asubuhi</string>
-    <string name="remind_morning_text">Al-Ikhlas, Al-Falaq na An-Naas mara tatu, na dua za asubuhi.</string>
-    <string name="remind_evening_title">Kinga ya jioni</string>
-    <string name="remind_evening_text">Al-Ikhlas, Al-Falaq na An-Naas mara tatu, na dua za jioni.</string>
+    <string name="remind_morning_title">Adhkar za asubuhi</string>
+    <string name="remind_morning_text">Wakati wa adhkar zako za asubuhi.</string>
+    <string name="remind_evening_title">Adhkar za jioni</string>
+    <string name="remind_evening_text">Wakati wa adhkar zako za jioni.</string>
     <string name="remind_bedtime_title">Kabla ya kulala</string>
     <string name="remind_bedtime_text">Ayatul-Kursiy, mwisho wa Al-Baqarah, kisha penga viganjani na ujipanguse.</string>
 

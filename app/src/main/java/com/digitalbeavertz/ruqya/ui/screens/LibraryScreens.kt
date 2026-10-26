@@ -58,6 +58,7 @@ import com.digitalbeavertz.ruqya.ui.components.QuietButton
 import com.digitalbeavertz.ruqya.ui.components.RCard
 import com.digitalbeavertz.ruqya.ui.components.ScreenPadding
 import com.digitalbeavertz.ruqya.ui.components.SectionTitle
+import com.digitalbeavertz.ruqya.ui.components.StarBadge
 import com.digitalbeavertz.ruqya.ui.components.Sources
 import com.digitalbeavertz.ruqya.ui.components.content
 import com.digitalbeavertz.ruqya.ui.components.iconFor
@@ -78,12 +79,14 @@ fun DuasScreen(nav: NavHostController) {
             val duas = content.duas.filter { it.category == cat.id }
             if (duas.isEmpty()) return@forEach
             item(key = "cat-${cat.id}") { SectionTitle(cat.title[l]) }
-            duas.forEach { d ->
+            duas.forEachIndexed { n, d ->
                 item(key = d.id) {
-                    RCard(onClick = { nav.navigate("dua/${d.id}") }) {
+                    RCard(onClick = { nav.navigate("dua/${d.id}") }, padding = 14.dp) {
                         Row(verticalAlignment = Alignment.CenterVertically) {
-                            Text(d.title[l], style = MaterialTheme.typography.titleMedium, color = c.ink, modifier = Modifier.weight(1f))
-                            if (d.count > 1) Chip(pluralStringResource(R.plurals.times, d.count, d.count), fill = c.soft, color = c.ink)
+                            StarBadge("${n + 1}", 34.dp)
+                            Spacer(Modifier.width(10.dp))
+                            Text(d.title[l], style = MaterialTheme.typography.titleSmall, color = c.ink, modifier = Modifier.weight(1f))
+                            Chip(pluralStringResource(R.plurals.times, d.count, d.count), fill = c.soft, color = c.ink)
                         }
                         Spacer(Modifier.height(8.dp))
                         Text(

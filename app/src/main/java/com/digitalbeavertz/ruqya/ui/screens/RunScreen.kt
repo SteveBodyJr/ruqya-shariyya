@@ -48,6 +48,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.runtime.rememberUpdatedState
+import androidx.compose.material.icons.rounded.Tune
+import androidx.compose.material.icons.rounded.ContentCopy
+import androidx.compose.material.icons.rounded.Share
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -96,8 +101,10 @@ fun RunScreen(nav: NavHostController, id: String) {
     val context = LocalContext.current
     val player = container.player
     val play by player.state.collectAsState()
-    val steps = session.steps
-    val pager = rememberPagerState { steps.size + 1 }
+    // Routines read the adhkar the person chose (see CustomizeScreen); sessions read every step.
+    val steps = session.chosen(if (session.isRoutine) p.chosenSteps(id) else null)
+    val stepsNow by rememberUpdatedState(steps)
+    val pager = rememberPagerState { stepsNow.size + 1 }
     val scope = rememberCoroutineScope()
     val counts = remember { mutableStateMapOf<Int, Int>() }
     var askDownload by remember { mutableStateOf(false) }
@@ -141,13 +148,26 @@ fun RunScreen(nav: NavHostController, id: String) {
                     style = MaterialTheme.typography.bodySmall, color = c.muted,
                 )
             }
+            if (session.isRoutine) {
+                IconButton(onClick = { nav.navigate("customize/${session.id}") }) {
+                    Icon(Icons.Rounded.Tune, stringResource(R.string.choose_adhkar), tint = c.green)
+                }
+            }
+        }
+        if (steps.isEmpty()) {
+            Column(Modifier.fillMaxWidth().weight(1f).padding(32.dp), horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
+                Text(stringResource(R.string.none_chosen), style = MaterialTheme.typography.bodyLarge, color = c.muted, textAlign = TextAlign.Center)
+                Spacer(Modifier.height(16.dp))
+                GreenButton(stringResource(R.string.choose_adhkar)) { nav.navigate("customize/${session.id}") }
+            }
+            return@Column
         }
         Box(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 6.dp).height(4.dp).clip(RoundedCornerShape(50)).background(c.soft)) {
             Box(Modifier.fillMaxWidth(((page + 1f) / (steps.size + 1f)).coerceIn(0f, 1f)).fillMaxHeight().clip(RoundedCornerShape(50)).background(c.green))
         }
 
         HorizontalPager(pager, Modifier.weight(1f), beyondViewportPageCount = 1) { i ->
-            if (i < steps.size) StepPage(steps[i]) else FinishPage(session) { nav.popBackStack() }
+            if (i < steps.size) StepPage(steps[i], if (play.key == keyOf(i)) play.file else null) else FinishPage(session) { nav.popBackStack() }
         }
 
         if (page < steps.size) {
@@ -219,7 +239,7 @@ private fun Step.passages(): List<Passage> = when (this) {
 }
 
 @Composable
-private fun StepPage(step: Step) {
+private fun StepPage(step: Step, playingFile: String?) {
     val c = RT.colors
     val l = lang()
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(horizontal = 20.dp, vertical = 12.dp)) {
@@ -256,7 +276,7 @@ private fun StepPage(step: Step) {
         }
         Spacer(Modifier.height(16.dp))
         when (step) {
-            is Step.Recite -> PassageText(step.passage)
+            is Step.Recite -> PassageText(step.passage, playingFile = playingFile)
             is Step.Say -> {
                 ArabicText(step.dua.ar, prose = true)
                 Spacer(Modifier.height(12.dp))
@@ -268,7 +288,7 @@ private fun StepPage(step: Step) {
                     Spacer(Modifier.height(18.dp))
                     Text(ps.name[l], style = MaterialTheme.typography.titleSmall, color = c.green)
                     Spacer(Modifier.height(4.dp))
-                    PassageText(ps, compact = true)
+                    PassageText(ps, compact = true, playingFile = playingFile)
                 }
             }
         }
@@ -278,20 +298,43 @@ private fun StepPage(step: Step) {
     }
 }
 
-/** Verses with the basmala where a surah starts, each followed by its transliteration and meaning. */
+/**
+ * Verses with the basmala where a surah starts. Each verse is a card with its number, copy and
+ * share, then the transliteration and meaning; the verse being recited is highlighted in mint.
+ */
 @Composable
-fun PassageText(passage: Passage, compact: Boolean = false) {
+fun PassageText(passage: Passage, compact: Boolean = false, playingFile: String? = null) {
     val c = RT.colors
+    val l = lang()
+    val context = LocalContext.current
     passage.ayahs.forEachIndexed { i, a ->
         if (a.startsSura) Basmala()
-        AyahArabic(a)
-        if (!compact) {
+        val active = playingFile == a.audio
+        val shape = RoundedCornerShape(16.dp)
+        if (compact) {
+            AyahArabic(a, Modifier.clip(shape).background(if (active) c.greenSoft else Color.Transparent).padding(horizontal = 6.dp))
+            Spacer(Modifier.height(4.dp))
+            return@forEachIndexed
+        }
+        Column(
+            Modifier.fillMaxWidth().padding(vertical = 4.dp).clip(shape)
+                .background(if (active) c.greenSoft else Color.Transparent).padding(horizontal = 4.dp, vertical = 8.dp),
+        ) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Text(
+                    a.key, style = MaterialTheme.typography.labelMedium, color = c.green,
+                    modifier = Modifier.clip(RoundedCornerShape(50)).background(if (active) c.card else c.soft).padding(horizontal = 10.dp, vertical = 4.dp),
+                )
+                Spacer(Modifier.weight(1f))
+                val text = "${a.tanzil}\n\n${a.meaning(l)}\n\n" + context.getString(R.string.quran_ref, a.key)
+                IconButton(onClick = { copy(context, text) }) { Icon(Icons.Rounded.ContentCopy, stringResource(R.string.copy), tint = c.muted, modifier = Modifier.size(20.dp)) }
+                IconButton(onClick = { share(context, text) }) { Icon(Icons.Rounded.Share, stringResource(R.string.share), tint = c.muted, modifier = Modifier.size(20.dp)) }
+            }
+            AyahArabic(a)
             Spacer(Modifier.height(8.dp))
             Meanings(a.translit) { a.meaning(it) }
-            if (i < passage.ayahs.lastIndex) HorizontalDivider(Modifier.padding(vertical = 14.dp), color = c.line)
-        } else {
-            Spacer(Modifier.height(4.dp))
         }
+        if (i < passage.ayahs.lastIndex && !active) HorizontalDivider(Modifier.padding(vertical = 6.dp), color = c.line)
     }
 }
 
@@ -342,7 +385,7 @@ private fun Counter(done: Int, total: Int, onTap: () -> Unit) {
     val c = RT.colors
     val complete = done >= total
     Row(
-        Modifier.height(52.dp).clip(RoundedCornerShape(50)).background(if (complete) c.greenSoft else c.card)
+        Modifier.height(52.dp).clip(RoundedCornerShape(50)).background(if (complete) c.greenSoft else c.soft)
             .clickable(onClick = onTap).padding(horizontal = 18.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {

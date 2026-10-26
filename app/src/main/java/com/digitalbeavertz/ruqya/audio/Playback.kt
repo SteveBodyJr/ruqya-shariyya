@@ -58,8 +58,11 @@ class PlaybackService : MediaSessionService() {
     }
 }
 
-/** What the session screen needs to know about playback. [key] names the step that is playing. */
-data class PlayState(val key: String? = null, val playing: Boolean = false, val index: Int = 0, val total: Int = 0)
+/**
+ * What the session screen needs to know about playback. [key] names the step that is playing and
+ * [file] the verse file (e.g. 002255) being recited, so that verse can be highlighted.
+ */
+data class PlayState(val key: String? = null, val playing: Boolean = false, val index: Int = 0, val total: Int = 0, val file: String? = null)
 
 /** Connects to [PlaybackService] and plays lists of verse files. */
 class Audio(private val context: Context, private val pack: AudioPack) {
@@ -80,6 +83,7 @@ class Audio(private val context: Context, private val pack: AudioPack) {
             key = if (ended) null else key,
             playing = p.isPlaying || (p.playWhenReady && p.playbackState == Player.STATE_BUFFERING),
             index = p.currentMediaItemIndex, total = p.mediaItemCount,
+            file = if (ended) null else p.currentMediaItem?.mediaId?.substringAfterLast('#'),
         )
     }
 
@@ -102,7 +106,7 @@ class Audio(private val context: Context, private val pack: AudioPack) {
     fun play(stepKey: String, title: String, files: List<String>) {
         val items = files.filter(pack::has).mapIndexed { i, name ->
             MediaItem.Builder()
-                .setMediaId("$stepKey#$i")
+                .setMediaId("$stepKey#$i#$name")
                 .setUri(Uri.fromFile(pack.file(name)))
                 .setMediaMetadata(MediaMetadata.Builder().setTitle(title).setArtist("Mishary Rashid Alafasy").build())
                 .build()

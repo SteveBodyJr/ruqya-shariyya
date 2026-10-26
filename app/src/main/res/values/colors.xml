@@ -1,5 +1,5 @@
 <resources>
-    <color name="canvas">#F6F5F0</color>
-    <color name="green">#14532D</color>
-    <color name="launcher_bg">#14532D</color>
+    <color name="canvas">#FFFFFF</color>
+    <color name="green">#1E9A45</color>
+    <color name="launcher_bg">#0F6B37</color>
 </resources>

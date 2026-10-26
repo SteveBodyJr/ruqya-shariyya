@@ -314,4 +314,4 @@ fun QuietButton(text: String, modifier: Modifier = Modifier, icon: ImageVector? 
 fun hhmm(minute: Int) = "%02d:%02d".format(minute / 60, minute % 60)
 
 val ScreenPadding = 16.dp
-val BottomBarSpace = 110.dp
+val BottomBarSpace = 96.dp

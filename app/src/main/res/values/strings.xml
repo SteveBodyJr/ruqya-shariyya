@@ -104,6 +104,25 @@
     <string name="translation_question_text">The meaning is shown under every verse and supplication.</string>
     <string name="translation_change_later">You can change this later in Settings.</string>
 
+    <string name="tile_morning">Morning</string>
+    <string name="tile_evening">Evening</string>
+    <string name="schedule_today">Today\'s adhkar</string>
+    <string name="choose_adhkar">Choose adhkar</string>
+    <string name="guidance">Guidance</string>
+    <string name="see_all">See all</string>
+    <string name="next_in">%1$s in %2$s</string>
+    <plurals name="adhkar_count">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
+    </plurals>
+    <string name="customize_title">Choose your adhkar</string>
+    <string name="customize_subtitle">Tick the ones you want to read every day</string>
+    <string name="chosen_of">%1$d of %2$d chosen</string>
+    <string name="optional_label">optional</string>
+    <string name="select_all">Select all</string>
+    <string name="reset_recommended">Recommended</string>
+    <string name="none_chosen">Nothing is chosen for this routine yet.</string>
+
     <!-- Settings -->
     <string name="reading">Reading</string>
     <string name="language">Language</string>
@@ -137,10 +156,10 @@
     <!-- Reminders -->
     <string name="channel_reminders">Daily reminders</string>
     <string name="channel_reminders_desc">Morning, evening and bedtime protection</string>
-    <string name="remind_morning_title">Morning protection</string>
-    <string name="remind_morning_text">Al-Ikhlas, Al-Falaq and An-Nas three times, and the morning supplications.</string>
-    <string name="remind_evening_title">Evening protection</string>
-    <string name="remind_evening_text">Al-Ikhlas, Al-Falaq and An-Nas three times, and the evening supplications.</string>
+    <string name="remind_morning_title">Morning adhkar</string>
+    <string name="remind_morning_text">Time for your morning adhkar.</string>
+    <string name="remind_evening_title">Evening adhkar</string>
+    <string name="remind_evening_text">Time for your evening adhkar.</string>
     <string name="remind_bedtime_title">Before sleep</string>
     <string name="remind_bedtime_text">Ayat al-Kursi, the end of Al-Baqarah, then blow into your hands and wipe.</string>
 

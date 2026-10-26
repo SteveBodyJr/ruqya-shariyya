@@ -52,7 +52,7 @@ import com.digitalbeavertz.ruqya.ui.components.Note
 import com.digitalbeavertz.ruqya.ui.components.RCard
 import com.digitalbeavertz.ruqya.ui.components.ScreenPadding
 import com.digitalbeavertz.ruqya.ui.components.Sources
-import com.digitalbeavertz.ruqya.ui.components.arabicDigits
+import com.digitalbeavertz.ruqya.ui.components.StarBadge
 import com.digitalbeavertz.ruqya.ui.components.content
 import com.digitalbeavertz.ruqya.ui.components.lang
 import com.digitalbeavertz.ruqya.ui.components.t
@@ -139,7 +139,7 @@ private fun SearchField(value: String, onChange: (String) -> Unit) {
 private fun NameCard(n: Name, onClick: () -> Unit) {
     val c = RT.colors
     RCard(onClick = onClick, padding = 14.dp) {
-        Text(arabicDigits(n.number) + "  ·  " + n.number, style = MaterialTheme.typography.labelSmall, color = c.gold)
+        androidx.compose.foundation.layout.Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) { StarBadge("${n.number}", 34.dp) }
         ArabicText(n.ar, size = 30, color = c.green, align = TextAlign.Center, modifier = Modifier.padding(vertical = 2.dp))
         Text(n.translit, style = MaterialTheme.typography.titleSmall, color = c.ink, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
         Text(

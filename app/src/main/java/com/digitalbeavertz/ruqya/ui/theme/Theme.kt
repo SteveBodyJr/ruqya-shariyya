@@ -21,7 +21,8 @@ import com.digitalbeavertz.ruqya.R
 import com.digitalbeavertz.ruqya.data.ArabicFont
 import com.digitalbeavertz.ruqya.data.ThemeMode
 
-// Calm and flat: a soft paper canvas, white cards and one deep green. No gradients, no emoji.
+// From the user's reference: white surfaces, a vivid green for actions, a deep green header with a
+// gold arch line, and a mint highlight. Flat colours only: no gradients, no emoji.
 
 @Immutable
 data class RColors(
@@ -31,8 +32,9 @@ data class RColors(
     val ink: Color,      // headings and main text
     val muted: Color,    // secondary text
     val line: Color,
-    val green: Color,    // the brand colour: buttons, accents
+    val green: Color,    // the brand colour: buttons, switches, the selected tab
     val onGreen: Color,
+    val header: Color,   // the deep green of the arch header
     val greenSoft: Color, // tinted fills (done states, source chips)
     val onGreenSoft: Color,
     val gold: Color,     // verse numbers and small ornaments
@@ -41,19 +43,19 @@ data class RColors(
 )
 
 private val Light = RColors(
-    canvas = Color(0xFFF6F5F0), card = Color(0xFFFFFFFF), soft = Color(0xFFECEBE4),
-    ink = Color(0xFF14201A), muted = Color(0xFF65706A), line = Color(0xFFE3E2DA),
-    green = Color(0xFF14532D), onGreen = Color.White,
-    greenSoft = Color(0xFFDCEBE1), onGreenSoft = Color(0xFF14532D),
-    gold = Color(0xFF9A7B2F), warn = Color(0xFFB42318), dark = false,
+    canvas = Color(0xFFFFFFFF), card = Color(0xFFFFFFFF), soft = Color(0xFFF2F5F3),
+    ink = Color(0xFF16201A), muted = Color(0xFF6A746E), line = Color(0xFFE1E7E3),
+    green = Color(0xFF1E9A45), onGreen = Color.White, header = Color(0xFF0F6B37),
+    greenSoft = Color(0xFFDDF1E3), onGreenSoft = Color(0xFF12632F),
+    gold = Color(0xFFD4A72C), warn = Color(0xFFC0392B), dark = false,
 )
 
 private val Dark = RColors(
-    canvas = Color(0xFF0C1310), card = Color(0xFF151E19), soft = Color(0xFF1F2A24),
-    ink = Color(0xFFEDF2EE), muted = Color(0xFF98A69E), line = Color(0xFF26322B),
-    green = Color(0xFF3E9A68), onGreen = Color.White,
-    greenSoft = Color(0xFF1C3427), onGreenSoft = Color(0xFFB9DCC6),
-    gold = Color(0xFFD2B46A), warn = Color(0xFFFF7A6E), dark = true,
+    canvas = Color(0xFF0C1210), card = Color(0xFF141C18), soft = Color(0xFF1C2621),
+    ink = Color(0xFFEAF1EC), muted = Color(0xFF93A198), line = Color(0xFF26312B),
+    green = Color(0xFF34B05A), onGreen = Color.White, header = Color(0xFF0D4425),
+    greenSoft = Color(0xFF183424), onGreenSoft = Color(0xFFB5E3C3),
+    gold = Color(0xFFE2BE5A), warn = Color(0xFFFF7A6E), dark = true,
 )
 
 val LocalR = staticCompositionLocalOf { Light }
