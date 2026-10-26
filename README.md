@@ -57,3 +57,18 @@ adb shell am start -n com.digitalbeavertz.ruqya/.MainActivity --es audioBase htt
 ```
 
 (debug builds only; `--es audioBase ""` goes back to everyayah.com).
+
+## License
+
+The app's source code is released under the [MIT License](LICENSE).
+
+Third-party content in this repository keeps its own terms and is not covered by the MIT License:
+
+| Content | Where | Terms |
+|---|---|---|
+| Quran text, Tanzil Project (tanzil.net) | `tools/sources/quran-*.txt`, `app/src/main/assets/ruqya.json` | May be copied and distributed verbatim only (no changes), with the source credited and linked; see the notice at the end of `quran-uthmani.txt` |
+| Quran text and Uthmanic Hafs font, King Fahd Complex (Madinah) | `tools/sources/hafsData_v18.json`, `app/src/main/res/font/arabic_madinah.ttf` | Terms of the King Fahd Glorious Quran Printing Complex |
+| Translations (Sahih International, Al-Barwani) and transliteration via tanzil.net | `tools/sources/en.*.txt`, `tools/sources/sw.barwani.txt`, `ruqya.json` | Non-commercial use, with credit |
+| Amiri Quran, Scheherazade New, Noto Naskh Arabic, Plus Jakarta Sans fonts | `app/src/main/res/font/` | SIL Open Font License 1.1 ([docs/FONT_LICENSE_OFL.txt](docs/FONT_LICENSE_OFL.txt)) |
+| Recitation (Mishary Rashid Alafasy, everyayah.com) | downloaded by the app, not stored here | Terms of everyayah.com |
+| Hadith texts (Arabic, for verification) | downloaded by `tools/`, not stored here | Terms of the source editions |
