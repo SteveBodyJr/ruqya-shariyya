@@ -1,0 +1,146 @@
+{
+  "_comment": "Fadhila (virtues) of each dhikr, merged into content.json by tools/merge_virtues.py. Every 'ar' is a quote from the hadith cited and is checked by build_content.py. 'fadl_note' is used only where no specific reward is narrated, and says so.",
+
+  "passages": {
+    "ikhlas": [
+      {"book": "bukhari", "n": "5013", "ar": "وَالَّذِي نَفْسِي بِيَدِهِ إِنَّهَا لَتَعْدِلُ ثُلُثَ الْقُرْآنِ",
+       "en": "By the One in whose hand is my soul, it is equal to a third of the Quran.",
+       "sw": "Naapa kwa Yule ambaye nafsi yangu iko mkononi Mwake, hakika (sura hii) inalingana na theluthi ya Qur'an."}
+    ],
+    "falaq": [
+      {"book": "muslim", "n": "814", "ar": "أَلَمْ تَرَ آيَاتٍ أُنْزِلَتِ اللَّيْلَةَ لَمْ يُرَ مِثْلُهُنَّ قَطُّ",
+       "en": "Have you not seen verses revealed tonight, the like of which has never been seen? (Al-Falaq and An-Nas)",
+       "sw": "Je, hujaona aya zilizoteremshwa usiku huu, ambazo hazijawahi kuonekana mfano wake kamwe? (Al-Falaq na An-Naas)"}
+    ],
+    "nas": [
+      {"book": "muslim", "n": "814", "ar": "أَلَمْ تَرَ آيَاتٍ أُنْزِلَتِ اللَّيْلَةَ لَمْ يُرَ مِثْلُهُنَّ قَطُّ",
+       "en": "Have you not seen verses revealed tonight, the like of which has never been seen? (Al-Falaq and An-Nas)",
+       "sw": "Je, hujaona aya zilizoteremshwa usiku huu, ambazo hazijawahi kuonekana mfano wake kamwe? (Al-Falaq na An-Naas)"}
+    ],
+    "kursi": [
+      {"book": "bukhari", "n": "2311", "ar": "لَنْ يَزَالَ عَلَيْكَ مِنَ اللَّهِ حَافِظٌ وَلاَ يَقْرَبَنَّكَ شَيْطَانٌ حَتَّى تُصْبِحَ",
+       "en": "When you go to bed and recite it, a guardian from Allah will remain with you and no devil will come near you until morning.",
+       "sw": "Ukienda kulala ukaisoma, utaendelea kuwa na mlinzi kutoka kwa Allah na shetani hatakukaribia mpaka asubuhi."}
+    ],
+    "baqarah_end": [
+      {"book": "bukhari", "n": "5009", "ar": "مَنْ قَرَأَ بِالآيَتَيْنِ مِنْ آخِرِ سُورَةِ الْبَقَرَةِ فِي لَيْلَةٍ كَفَتَاهُ",
+       "en": "Whoever recites the last two verses of Al-Baqarah at night, they will suffice him.",
+       "sw": "Atakayesoma aya mbili za mwisho za Suratul-Baqarah usiku, zitamtosheleza."}
+    ],
+    "fatiha": [
+      {"book": "bukhari", "n": "5736", "ar": "وَمَا أَدْرَاكَ أَنَّهَا رُقْيَةٌ",
+       "en": "The Prophet approved Al-Fatihah as a ruqya: 'And how did you know it is a ruqya?'",
+       "sw": "Mtume aliikubali Al-Fatiha kuwa ruqyah: 'Na umejuaje kwamba hiyo ni ruqyah?'"}
+    ]
+  },
+
+  "routine_steps": {
+    "_comment": "Virtues of reading a passage in the morning and evening routines (added to those steps).",
+    "quls": [
+      {"book": "abudawud", "n": "5082", "ar": "قُلْ هُوَ اللَّهُ أَحَدٌ وَالْمُعَوِّذَتَيْنِ حِينَ تُمْسِي وَحِينَ تُصْبِحُ ثَلاَثَ مَرَّاتٍ تَكْفِيكَ مِنْ كُلِّ شَيْءٍ",
+       "en": "Recite Qul huwa Allahu ahad and the two Mu'awwidhat in the evening and the morning three times; they will suffice you against everything.",
+       "sw": "Soma Qul huwa Allahu ahad na Al-Mu'awwidhatayn jioni na asubuhi mara tatu; zitakutosheleza dhidi ya kila kitu."}
+    ]
+  },
+
+  "actions": {
+    "wipe": [
+      {"book": "bukhari", "n": "5017", "ar": "كَانَ إِذَا أَوَى إِلَى فِرَاشِهِ كُلَّ لَيْلَةٍ جَمَعَ كَفَّيْهِ ثُمَّ نَفَثَ فِيهِمَا",
+       "en": "This was the Prophet's practice every night when he went to bed.",
+       "sw": "Hii ilikuwa desturi ya Mtume kila usiku alipokwenda kulala."}
+    ]
+  },
+
+  "duas": {
+    "asbahna_mulk": {"fadl_note": {
+      "en": "No particular reward is mentioned for it; it is what the Prophet said every morning and evening, and following his Sunnah is itself the virtue. In it you ask for the good of the day and seek refuge from laziness, the misery of old age, and the punishment of the Fire and the grave.",
+      "sw": "Hakuna malipo maalumu yaliyotajwa kwa dua hii; ni dua aliyokuwa akiisema Mtume kila asubuhi na jioni, na kufuata Sunnah yake ndiyo fadhila yenyewe. Ndani yake unaomba kheri ya siku na kujikinga na uvivu, ubaya wa uzee, na adhabu ya Moto na ya kaburi."}},
+    "amsayna_mulk": {"fadl_note": {
+      "en": "No particular reward is mentioned for it; it is what the Prophet said every evening and morning, and following his Sunnah is itself the virtue. In it you ask for the good of the night and seek refuge from laziness, the misery of old age, and the punishment of the Fire and the grave.",
+      "sw": "Hakuna malipo maalumu yaliyotajwa kwa dua hii; ni dua aliyokuwa akiisema Mtume kila jioni na asubuhi, na kufuata Sunnah yake ndiyo fadhila yenyewe. Ndani yake unaomba kheri ya usiku na kujikinga na uvivu, ubaya wa uzee, na adhabu ya Moto na ya kaburi."}},
+    "bika_asbahna": {"virtues": [
+      {"book": "tirmidhi", "n": "3391", "ar": "كَانَ رَسُولُ اللَّهِ صلى الله عليه وسلم يُعَلِّمُ أَصْحَابَهُ",
+       "en": "The Messenger of Allah used to teach it to his companions, to say in the morning and the evening.",
+       "sw": "Mtume wa Allah alikuwa akiwafundisha maswahaba wake waiseme asubuhi na jioni."}],
+      "fadl_note": {"en": "It reminds you that your life, your death and the resurrection are all by Allah.", "sw": "Inakukumbusha kwamba uhai wako, kifo chako na kufufuliwa vyote ni kwa Allah."}},
+    "bika_amsayna": {"virtues": [
+      {"book": "tirmidhi", "n": "3391", "ar": "كَانَ رَسُولُ اللَّهِ صلى الله عليه وسلم يُعَلِّمُ أَصْحَابَهُ",
+       "en": "The Messenger of Allah used to teach it to his companions, to say in the morning and the evening.",
+       "sw": "Mtume wa Allah alikuwa akiwafundisha maswahaba wake waiseme asubuhi na jioni."}],
+      "fadl_note": {"en": "It reminds you that your life, your death and the resurrection are all by Allah.", "sw": "Inakukumbusha kwamba uhai wako, kifo chako na kufufuliwa vyote ni kwa Allah."}},
+    "sayyid_istighfar": {"drop_note": true, "virtues": [
+      {"book": "bukhari", "n": "6306", "ar": "سَيِّدُ الاِسْتِغْفَارِ",
+       "en": "The Prophet called it the master (the best) of all supplications for forgiveness.",
+       "sw": "Mtume aliiita bwana (bora) wa dua zote za kuomba msamaha."},
+      {"book": "bukhari", "n": "6306", "ar": "وَمَنْ قَالَهَا مِنَ النَّهَارِ مُوقِنًا بِهَا، فَمَاتَ مِنْ يَوْمِهِ قَبْلَ أَنْ يُمْسِيَ، فَهُوَ مِنْ أَهْلِ الْجَنَّةِ",
+       "en": "Whoever says it during the day with firm faith and dies that day before evening is among the people of Paradise; and likewise whoever says it at night and dies before morning.",
+       "sw": "Atakayeisema mchana akiwa na yakini nayo, akafa siku hiyo kabla ya jioni, ni miongoni mwa watu wa Peponi; na vivyo hivyo atakayeisema usiku akafa kabla ya asubuhi."}]},
+    "afw_afiyah": {"drop_note": true, "virtues": [
+      {"book": "ibnmajah", "n": "3871", "ar": "لَمْ يَكُنْ رَسُولُ اللَّهِ ـ صلى الله عليه وسلم ـ يَدَعُ هَؤُلاَءِ الدَّعَوَاتِ حِينَ يُمْسِي وَحِينَ يُصْبِحُ",
+       "en": "The Messenger of Allah never left these supplications in the evening and the morning.",
+       "sw": "Mtume wa Allah hakuwahi kuziacha dua hizi jioni na asubuhi."}],
+      "fadl_note": {"en": "You ask Allah for pardon and well-being in your religion, your worldly life, your family and your wealth, and for protection from every side.", "sw": "Unamwomba Allah msamaha na afya katika dini yako, dunia yako, familia yako na mali yako, na ulinzi kutoka kila upande."}},
+    "alim_ghayb": {"drop_note": true, "virtues": [
+      {"book": "tirmidhi", "n": "3392", "ar": "قُلْهُ إِذَا أَصْبَحْتَ وَإِذَا أَمْسَيْتَ وَإِذَا أَخَذْتَ مَضْجَعَكَ",
+       "en": "The Prophet told Abu Bakr: say it in the morning, in the evening and when you lie down to sleep.",
+       "sw": "Mtume alimwambia Abu Bakr: iseme asubuhi, jioni na unapolala."}],
+      "fadl_note": {"en": "It seeks refuge from the evil of your own self and from Satan and his call to shirk.", "sw": "Ni kujikinga na shari ya nafsi yako na shetani na mwito wake wa ushirikina."}},
+    "bismillah_ladhi": {"drop_note": true, "virtues": [
+      {"book": "abudawud", "n": "5088", "ar": "ثَلاَثَ مَرَّاتٍ لَمْ تُصِبْهُ فَجْأَةُ بَلاَءٍ حَتَّى يُصْبِحَ وَمَنْ قَالَهَا حِينَ يُصْبِحُ ثَلاَثَ مَرَّاتٍ لَمْ تُصِبْهُ فَجْأَةُ بَلاَءٍ حَتَّى يُمْسِيَ",
+       "en": "Whoever says it three times in the evening will not be struck by a sudden affliction until morning, and whoever says it three times in the morning will not be struck by a sudden affliction until evening.",
+       "sw": "Atakayesema mara tatu jioni hatapatwa na balaa la ghafla mpaka asubuhi, na atakayesema mara tatu asubuhi hatapatwa na balaa la ghafla mpaka jioni."}]},
+    "afini": {"virtues": [
+      {"book": "abudawud", "n": "5090", "ar": "إِنِّي سَمِعْتُ رَسُولَ اللَّهِ صلى الله عليه وسلم يَدْعُو بِهِنَّ فَأَنَا أُحِبُّ أَنْ أَسْتَنَّ بِسُنَّتِهِ",
+       "en": "Abu Bakrah said: I heard the Messenger of Allah supplicate with these, and I love to follow his Sunnah.",
+       "sw": "Abu Bakrah alisema: Nilimsikia Mtume wa Allah akiomba kwa dua hizi, nami napenda kufuata Sunnah yake."}],
+      "fadl_note": {"en": "You ask Allah for well-being in your body, your hearing and your sight.", "sw": "Unamwomba Allah afya katika mwili wako, usikivu wako na macho yako."}},
+    "tahlil": {"drop_note": true, "virtues": [
+      {"book": "ibnmajah", "n": "3867", "ar": "كَانَ لَهُ عَدْلَ رَقَبَةٍ مِنْ وَلَدِ إِسْمَاعِيلَ وَحُطَّ عَنْهُ عَشْرُ خَطِيئَاتٍ وَرُفِعَ لَهُ عَشْرُ دَرَجَاتٍ وَكَانَ فِي حِرْزٍ مِنَ الشَّيْطَانِ حَتَّى يُمْسِيَ",
+       "en": "Said in the morning: it is like freeing a slave from the descendants of Isma'il, ten sins are removed, he is raised ten degrees and he is protected from Satan until evening; and the same when said in the evening, until morning.",
+       "sw": "Akisema asubuhi: ni kama kumwacha huru mtumwa wa kizazi cha Ismail, anafutiwa makosa kumi, anapandishwa daraja kumi na analindwa na shetani mpaka jioni; na vivyo hivyo akisema jioni, mpaka asubuhi."}]},
+    "tahlil_100": {"drop_note": true, "virtues": [
+      {"book": "bukhari", "n": "6403", "ar": "كَانَتْ لَهُ عَدْلَ عَشْرِ رِقَابٍ، وَكُتِبَ لَهُ مِائَةُ حَسَنَةٍ، وَمُحِيَتْ عَنْهُ مِائَةُ سَيِّئَةٍ، وَكَانَتْ لَهُ حِرْزًا مِنَ الشَّيْطَانِ يَوْمَهُ ذَلِكَ، حَتَّى يُمْسِيَ",
+       "en": "Whoever says it a hundred times in a day: it equals freeing ten slaves, a hundred good deeds are written for him, a hundred bad deeds are erased, and it is a protection from Satan that day until evening.",
+       "sw": "Atakayesema mara mia kwa siku: ni sawa na kuwaacha huru watumwa kumi, anaandikiwa mema mia, anafutiwa maovu mia, na ni kinga dhidi ya shetani siku hiyo mpaka jioni."}]},
+    "subhan_adad": {"note": {"en": "The Prophet said these words three times after Fajr.", "sw": "Mtume alisema maneno haya mara tatu baada ya Alfajiri."}, "virtues": [
+      {"book": "muslim", "n": "2726", "ar": "لَوْ وُزِنَتْ بِمَا قُلْتِ مُنْذُ الْيَوْمِ لَوَزَنَتْهُنَّ",
+       "en": "If they were weighed against everything you have said since the morning, they would outweigh it.",
+       "sw": "Lau yangepimwa dhidi ya yote uliyoyasema tangu asubuhi, yangeyazidi uzito."}]},
+    "ilman_nafian": {"fadl_note": {
+      "en": "No particular reward is mentioned for it; the Prophet said it after the Fajr prayer, asking for beneficial knowledge, good provision and accepted deeds.",
+      "sw": "Hakuna malipo maalumu yaliyotajwa kwa dua hii; Mtume aliisema baada ya swala ya Alfajiri, akiomba elimu yenye manufaa, riziki nzuri na amali zinazokubaliwa."}},
+    "subhanallah_100": {"drop_note": true, "virtues": [
+      {"book": "muslim", "n": "2692", "ar": "لَمْ يَأْتِ أَحَدٌ يَوْمَ الْقِيَامَةِ بِأَفْضَلَ مِمَّا جَاءَ بِهِ إِلاَّ أَحَدٌ قَالَ مِثْلَ مَا قَالَ أَوْ زَادَ عَلَيْهِ",
+       "en": "Whoever says it a hundred times in the morning and the evening: no one will come on the Day of Resurrection with anything better, except someone who said the same or more.",
+       "sw": "Atakayesema mara mia asubuhi na jioni: hakuna atakayekuja Siku ya Kiyama na bora kuliko alichokuja nacho, isipokuwa aliyesema kama yeye au zaidi."},
+      {"book": "bukhari", "n": "6405", "ar": "فِي يَوْمٍ مِائَةَ مَرَّةٍ حُطَّتْ خَطَايَاهُ، وَإِنْ كَانَتْ مِثْلَ زَبَدِ الْبَحْرِ",
+       "en": "Whoever says it a hundred times in a day, his sins are wiped away even if they were like the foam of the sea.",
+       "sw": "Atakayesema mara mia kwa siku, hufutiwa makosa yake hata kama yangekuwa mengi kama povu la bahari."}]},
+    "istighfar_100": {"drop_note": true, "virtues": [
+      {"book": "muslim", "n": "2702", "ar": "يَا أَيُّهَا النَّاسُ تُوبُوا إِلَى اللَّهِ فَإِنِّي أَتُوبُ فِي الْيَوْمِ إِلَيْهِ مِائَةَ مَرَّةٍ",
+       "en": "O people, repent to Allah, for I repent to Him a hundred times a day.",
+       "sw": "Enyi watu, tubuni kwa Allah, kwani mimi natubu Kwake mara mia kwa siku."},
+      {"book": "bukhari", "n": "6307", "ar": "وَاللَّهِ إِنِّي لأَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ فِي الْيَوْمِ أَكْثَرَ مِنْ سَبْعِينَ مَرَّةً",
+       "en": "By Allah, I seek Allah's forgiveness and repent to Him more than seventy times a day.",
+       "sw": "Wallahi, hakika mimi namwomba Allah msamaha na kutubu Kwake zaidi ya mara sabini kwa siku."}]},
+    "kalimat": {"drop_note": true, "virtues": [
+      {"book": "muslim", "n": "2708", "ar": "مَنْ نَزَلَ مَنْزِلاً ثُمَّ قَالَ أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ لَمْ يَضُرُّهُ شَىْءٌ حَتَّى يَرْتَحِلَ مِنْ مَنْزِلِهِ ذَلِكَ",
+       "en": "Whoever stops at a place and says it, nothing will harm him until he leaves that place.",
+       "sw": "Atakayeshuka mahali kisha akasema hivi, hakuna kitakachomdhuru mpaka aondoke mahali hapo."},
+      {"book": "tirmidhi", "n": "3604.02", "grade": {"en": "Hasan (at-Tirmidhi)", "sw": "Hasan (at-Tirmidhi)"}, "ar": "مَنْ قَالَ حِينَ يُمْسِي ثَلاَثَ مَرَّاتٍ أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ لَمْ يَضُرَّهُ حُمَةٌ تِلْكَ اللَّيْلَةَ",
+       "en": "Whoever says it three times in the evening, no sting will harm him that night.",
+       "sw": "Atakayesema mara tatu jioni, hakuna sumu itakayomdhuru usiku huo."}]},
+    "visit": {"drop_note": true, "virtues": [
+      {"book": "abudawud", "n": "3106", "ar": "مَنْ عَادَ مَرِيضًا لَمْ يَحْضُرْ أَجَلُهُ فَقَالَ عِنْدَهُ سَبْعَ مِرَارٍ أَسْأَلُ اللَّهَ الْعَظِيمَ رَبَّ الْعَرْشِ الْعَظِيمِ أَنْ يَشْفِيَكَ إِلاَّ عَافَاهُ اللَّهُ مِنْ ذَلِكَ الْمَرَضِ",
+       "en": "Whoever visits a sick person whose time has not come and says it seven times beside him, Allah will cure him of that illness.",
+       "sw": "Atakayemtembelea mgonjwa ambaye muda wake haujafika na akasema hivi mara saba karibu naye, Allah atamponya ugonjwa huo."}]},
+    "yunus": {"note": {"en": "Yunus called with it in the belly of the whale.", "sw": "Yunus aliomba kwayo akiwa tumboni mwa samaki."}, "virtues": [
+      {"book": "tirmidhi", "n": "3505", "ar": "فَإِنَّهُ لَمْ يَدْعُ بِهَا رَجُلٌ مُسْلِمٌ فِي شَيْءٍ قَطُّ إِلاَّ اسْتَجَابَ اللَّهُ لَهُ",
+       "en": "No Muslim ever calls upon Allah with it for anything except that Allah answers him.",
+       "sw": "Hakuna Muislamu anayeomba kwayo jambo lolote isipokuwa Allah humjibu."}]},
+    "children": {"virtues": [
+      {"book": "bukhari", "n": "3371", "ar": "إِنَّ أَبَاكُمَا كَانَ يُعَوِّذُ بِهَا إِسْمَاعِيلَ وَإِسْحَاقَ",
+       "en": "Your father (Ibrahim) used to seek protection with these words for Isma'il and Ishaq.",
+       "sw": "Baba yenu (Ibrahim) alikuwa akiwaombea kinga Ismail na Is-haq kwa maneno haya."}]}
+  }
+}

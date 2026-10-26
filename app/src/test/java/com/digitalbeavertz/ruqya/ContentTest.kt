@@ -96,6 +96,17 @@ class ContentTest {
         assertEquals(3, content.session("evening")!!.steps.first { it.key == "d:kalimat" }.count)
     }
 
+    @Test fun everyAdhkarShowsItsFadhila() {
+        listOf("morning", "evening", "bedtime").forEach { id ->
+            content.session(id)!!.steps.forEach { st ->
+                assertTrue("$id ${st.key} has no fadhila", st.virtues.isNotEmpty() || st.fadlNote != null)
+            }
+        }
+        // The Quls carry both: 'they suffice you' (Abu Dawud 5082) and their own merit.
+        val ikhlas = content.session("morning")!!.steps.first { it.key == "p:ikhlas" }
+        assertEquals(listOf("5082", "5013"), ikhlas.virtues.map { it.source.n })
+    }
+
     @Test fun gradesShownForSunanCollections() {
         val visit = content.dua("visit")!!.sources.first()
         assertEquals("abudawud", visit.book)

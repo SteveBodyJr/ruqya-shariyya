@@ -125,8 +125,9 @@ fun AppRoot(startRoute: String?, onStartRouteUsed: () -> Unit) {
                 ArticleScreen(nav, it.arguments?.getString("id").orEmpty())
             }
         }
-        // Tabs scroll under the status bar: keep it readable with a strip of the canvas colour.
-        if (route in TABS && route != "home") {
+        // Screens scroll under the status bar: keep it readable with a strip of the canvas colour
+        // (not on Home, whose green header sits there).
+        if (route != "home") {
             Box(Modifier.fillMaxWidth().windowInsetsTopHeight(WindowInsets.statusBars).background(RT.colors.canvas))
         }
         AnimatedVisibility(

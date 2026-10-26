@@ -146,6 +146,39 @@ def main():
         src["grade"] = grade(src)
 
     by_id = {d["id"]: d for d in content["duas"]}
+
+    # ---- Fadhila: the virtues of each dhikr (tools/content/virtues.json), each quote checked below.
+    virt = json.loads((ROOT / "content" / "virtues.json").read_text(encoding="utf-8"))
+    passages_by_id = {x["id"]: x for x in content["passages"]}
+    for pid, vs in virt["passages"].items():
+        passages_by_id[pid]["virtues"] = vs
+    for aid, vs in virt["actions"].items():
+        content["actions"][aid]["virtues"] = vs
+    for did, cfg in virt["duas"].items():
+        d = by_id[did]
+        if cfg.get("drop_note"):
+            d.pop("note", None)
+        if "note" in cfg:
+            d["note"] = cfg["note"]
+        d["virtues"] = cfg.get("virtues", [])
+        if "fadl_note" in cfg:
+            d["fadl_note"] = cfg["fadl_note"]
+    for r in content["routines"]:
+        for st in r["steps"]:
+            # The three Quls in the morning/evening routines carry Abu Dawud 5082 ("they suffice you").
+            if st.get("passage") in ("ikhlas", "falaq", "nas") and any(x["n"] == "5082" for x in st.get("src", [])):
+                st["virtues"] = virt["routine_steps"]["quls"]
+                st.pop("note", None)
+            # These notes only repeated a virtue that is now shown with its hadith.
+            if st.get("dua") == "kalimat" or st.get("passage") in ("kursi", "baqarah_end"):
+                st.pop("note", None)
+    every = [(f"passage {p['id']}", v) for p in content["passages"] for v in p.get("virtues", [])]
+    every += [(f"action {k}", v) for k, a in content["actions"].items() for v in a.get("virtues", [])]
+    every += [(f"dua {d['id']}", v) for d in content["duas"] for v in d.get("virtues", [])]
+    every += [(f"{r['id']} {st.get('passage')}", v) for r in content["routines"] for st in r["steps"] for v in st.get("virtues", [])]
+    for where, v in every:
+        check(f"virtue of {where}", v, v["ar"])
+
     for d in content["duas"]:
         where = f"dua {d['id']}"
         # The first source holds the exact wording; the others are listed as further references.

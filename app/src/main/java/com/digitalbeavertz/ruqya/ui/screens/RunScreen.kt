@@ -80,6 +80,7 @@ import com.digitalbeavertz.ruqya.ui.components.LocalContainer
 import com.digitalbeavertz.ruqya.ui.components.Meanings
 import com.digitalbeavertz.ruqya.ui.components.Note
 import com.digitalbeavertz.ruqya.ui.components.Sources
+import com.digitalbeavertz.ruqya.ui.components.VirtuesCard
 import com.digitalbeavertz.ruqya.ui.components.content
 import com.digitalbeavertz.ruqya.ui.components.lang
 import com.digitalbeavertz.ruqya.ui.components.prefs
@@ -291,6 +292,10 @@ private fun StepPage(step: Step, playingFile: String?) {
                     PassageText(ps, compact = true, playingFile = playingFile)
                 }
             }
+        }
+        if (step.virtues.isNotEmpty() || step.fadlNote != null) {
+            Spacer(Modifier.height(18.dp))
+            VirtuesCard(step.virtues, step.fadlNote)
         }
         Spacer(Modifier.height(16.dp))
         Sources(step.sources)

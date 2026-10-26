@@ -23,6 +23,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material.icons.automirrored.rounded.MenuBook
+import androidx.compose.material.icons.rounded.AutoAwesome
 import androidx.compose.material.icons.rounded.Bedtime
 import androidx.compose.material.icons.rounded.Block
 import androidx.compose.material.icons.rounded.CheckCircle
@@ -65,6 +66,7 @@ import com.digitalbeavertz.ruqya.R
 import com.digitalbeavertz.ruqya.data.ArabicFont
 import com.digitalbeavertz.ruqya.data.Ayah
 import com.digitalbeavertz.ruqya.data.Content
+import com.digitalbeavertz.ruqya.data.Evidence
 import com.digitalbeavertz.ruqya.data.Lang
 import com.digitalbeavertz.ruqya.data.Prefs
 import com.digitalbeavertz.ruqya.data.Source
@@ -307,6 +309,41 @@ fun QuietButton(text: String, modifier: Modifier = Modifier, icon: ImageVector? 
             Spacer(Modifier.width(8.dp))
         }
         Text(text, style = MaterialTheme.typography.labelLarge, color = c.ink)
+    }
+}
+
+/**
+ * "Fadhila zake": the virtues of a dhikr, each with the hadith's own words, its meaning and source,
+ * and the plain note where no particular reward is narrated.
+ */
+@Composable
+fun VirtuesCard(virtues: List<Evidence.Hadith>, note: Txt?) {
+    if (virtues.isEmpty() && note == null) return
+    val c = RT.colors
+    val l = lang()
+    val p = prefs()
+    val shape = RoundedCornerShape(20.dp)
+    Column(
+        Modifier.fillMaxWidth().clip(shape).background(c.gold.copy(alpha = if (c.dark) 0.12f else 0.09f))
+            .border(1.dp, c.gold.copy(alpha = 0.45f), shape).padding(16.dp),
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(Icons.Rounded.AutoAwesome, null, tint = c.gold, modifier = Modifier.size(20.dp))
+            Spacer(Modifier.width(8.dp))
+            Text(stringResource(R.string.virtues_title), style = MaterialTheme.typography.titleSmall, color = c.ink)
+        }
+        virtues.forEach { v ->
+            Spacer(Modifier.height(12.dp))
+            ArabicText(v.ar, size = (p.arabicSize * 0.72f).toInt(), prose = true)
+            Spacer(Modifier.height(4.dp))
+            Text(v.meaning[l], style = MaterialTheme.typography.bodyMedium, color = c.ink)
+            Spacer(Modifier.height(8.dp))
+            Sources(listOf(v.source))
+        }
+        note?.let {
+            Spacer(Modifier.height(12.dp))
+            Text(it[l], style = MaterialTheme.typography.bodyMedium, color = c.muted)
+        }
     }
 }
 

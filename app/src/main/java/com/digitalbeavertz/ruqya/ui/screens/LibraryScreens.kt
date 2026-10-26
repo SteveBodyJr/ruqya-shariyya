@@ -59,6 +59,7 @@ import com.digitalbeavertz.ruqya.ui.components.RCard
 import com.digitalbeavertz.ruqya.ui.components.ScreenPadding
 import com.digitalbeavertz.ruqya.ui.components.SectionTitle
 import com.digitalbeavertz.ruqya.ui.components.StarBadge
+import com.digitalbeavertz.ruqya.ui.components.VirtuesCard
 import com.digitalbeavertz.ruqya.ui.components.Sources
 import com.digitalbeavertz.ruqya.ui.components.content
 import com.digitalbeavertz.ruqya.ui.components.iconFor
@@ -124,6 +125,10 @@ fun DuaScreen(nav: NavHostController, id: String) {
             d.note?.let {
                 Spacer(Modifier.height(12.dp))
                 Note(it[l])
+            }
+            if (d.virtues.isNotEmpty() || d.fadlNote != null) {
+                Spacer(Modifier.height(12.dp))
+                VirtuesCard(d.virtues, d.fadlNote)
             }
             Spacer(Modifier.height(14.dp))
             Sources(d.sources)

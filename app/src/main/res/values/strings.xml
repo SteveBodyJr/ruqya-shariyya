@@ -123,6 +123,8 @@
     <string name="reset_recommended">Recommended</string>
     <string name="none_chosen">Nothing is chosen for this routine yet.</string>
 
+    <string name="virtues_title">Its virtues</string>
+
     <!-- Settings -->
     <string name="reading">Reading</string>
     <string name="language">Language</string>

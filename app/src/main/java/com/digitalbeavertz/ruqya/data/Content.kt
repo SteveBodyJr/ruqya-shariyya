@@ -34,7 +34,7 @@ data class Ayah(
     fun meaning(lang: Lang) = if (lang == Lang.SW) sw else en
 }
 
-data class Passage(val id: String, val name: Txt, val ayahs: List<Ayah>) {
+data class Passage(val id: String, val name: Txt, val ayahs: List<Ayah>, val virtues: List<Evidence.Hadith> = emptyList()) {
     /** "2:255" or "2:285-286"; passages from several surahs list them all. */
     val reference: String
         get() = ayahs.groupBy { it.sura }.entries.joinToString(", ") { (s, a) ->
@@ -46,11 +46,16 @@ data class Dua(
     val id: String, val category: String, val title: Txt,
     val ar: String, val translit: String, val meaning: Txt,
     val count: Int, val sources: List<Source>, val note: Txt?,
+    /** Fadhila: what the hadith says about its reward or merit. */
+    val virtues: List<Evidence.Hadith> = emptyList(),
+    /** Said plainly where no particular reward is narrated (or to add what the dua asks for). */
+    val fadlNote: Txt? = null,
 )
 
 data class Action(
     val id: String, val title: Txt, val body: Txt,
     val passages: List<Passage>, val count: Int, val sources: List<Source>,
+    val virtues: List<Evidence.Hadith> = emptyList(),
 )
 
 sealed class Step {
@@ -62,16 +67,28 @@ sealed class Step {
     abstract val optional: Boolean
     /** Stable within a session: "p:ikhlas", "d:sayyid_istighfar", "a:wipe". Saved in the person's choices. */
     abstract val key: String
+    /** Virtues of reading it here (e.g. the Quls three times morning and evening), before those of the dhikr itself. */
+    abstract val stepVirtues: List<Evidence.Hadith>
 
-    data class Recite(val passage: Passage, override val count: Int, override val sources: List<Source>, override val note: Txt?, override val optional: Boolean = false) : Step() {
+    /** All the virtues to show for this step. */
+    val virtues: List<Evidence.Hadith>
+        get() = stepVirtues + when (this) {
+            is Recite -> passage.virtues
+            is Say -> dua.virtues
+            is Do -> action.virtues
+        }
+
+    val fadlNote: Txt? get() = (this as? Say)?.dua?.fadlNote
+
+    data class Recite(val passage: Passage, override val count: Int, override val sources: List<Source>, override val note: Txt?, override val optional: Boolean = false, override val stepVirtues: List<Evidence.Hadith> = emptyList()) : Step() {
         override val title get() = passage.name
         override val key get() = "p:${passage.id}"
     }
-    data class Say(val dua: Dua, override val count: Int, override val sources: List<Source>, override val note: Txt?, override val optional: Boolean = false) : Step() {
+    data class Say(val dua: Dua, override val count: Int, override val sources: List<Source>, override val note: Txt?, override val optional: Boolean = false, override val stepVirtues: List<Evidence.Hadith> = emptyList()) : Step() {
         override val title get() = dua.title
         override val key get() = "d:${dua.id}"
     }
-    data class Do(val action: Action, override val count: Int, override val sources: List<Source>, override val note: Txt?, override val optional: Boolean = false) : Step() {
+    data class Do(val action: Action, override val count: Int, override val sources: List<Source>, override val note: Txt?, override val optional: Boolean = false, override val stepVirtues: List<Evidence.Hadith> = emptyList()) : Step() {
         override val title get() = action.title
         override val key get() = "a:${action.id}"
     }
@@ -151,6 +168,9 @@ class Content(
             fun sources(a: JSONArray?) = a.objects().map {
                 Source(it.getString("book"), it.getString("n"), txt(it.optJSONObject("grade")))
             }
+            fun virtues(a: JSONArray?) = a.objects().map {
+                Evidence.Hadith(sources(JSONArray().put(it)).first(), it.getString("ar"), Txt(it.getString("en"), it.getString("sw")))
+            }
 
             val books = root.getJSONObject("books").let { b -> b.keys().asSequence().associateWith { txt(b.getJSONObject(it))!! } }
 
@@ -162,7 +182,7 @@ class Content(
                         (g.getInt(1)..g.getInt(2)).map { a -> ayah("$s:$a") }
                     }
                 }
-                p.getString("id") to Passage(p.getString("id"), txt(p.getJSONObject("name"))!!, list)
+                p.getString("id") to Passage(p.getString("id"), txt(p.getJSONObject("name"))!!, list, virtues(p.optJSONArray("virtues")))
             }
 
             val duas = root.getJSONArray("duas").objects().map { d ->
@@ -170,6 +190,7 @@ class Content(
                     d.getString("id"), d.getString("category"), txt(d.getJSONObject("title"))!!,
                     d.getString("ar"), d.getString("tr"), Txt(d.getString("en"), d.getString("sw")),
                     d.optInt("count", 1), sources(d.getJSONArray("src")), txt(d.optJSONObject("note")),
+                    virtues(d.optJSONArray("virtues")), txt(d.optJSONObject("fadl_note")),
                 )
             }.also { list -> check(list.map { it.id }.toSet().size == list.size) { "duplicate dua id" } }
             val duaById = duas.associateBy { it.id }
@@ -180,7 +201,7 @@ class Content(
                 Action(
                     id, txt(a.getJSONObject("title"))!!, txt(a.getJSONObject("body"))!!,
                     a.optJSONArray("passages").strings().map { passages.getValue(it) },
-                    a.optInt("count", 1), sources(a.optJSONArray("src")),
+                    a.optInt("count", 1), sources(a.optJSONArray("src")), virtues(a.optJSONArray("virtues")),
                 )
             }
 
@@ -189,13 +210,14 @@ class Content(
                 val note = txt(o.optJSONObject("note"))
                 val count = if (o.has("count")) o.getInt("count") else null
                 val optional = o.optBoolean("optional", false)
+                val extra = virtues(o.optJSONArray("virtues"))
                 return when {
-                    o.has("passage") -> Step.Recite(passages.getValue(o.getString("passage")), count ?: 1, src.orEmpty(), note, optional)
+                    o.has("passage") -> Step.Recite(passages.getValue(o.getString("passage")), count ?: 1, src.orEmpty(), note, optional, extra)
                     o.has("dua") -> duaById.getValue(o.getString("dua")).let { d ->
-                        Step.Say(d, count ?: d.count, src ?: d.sources, note ?: d.note, optional)
+                        Step.Say(d, count ?: d.count, src ?: d.sources, note ?: d.note, optional, extra)
                     }
                     o.has("action") -> actions.getValue(o.getString("action")).let { a ->
-                        Step.Do(a, count ?: a.count, src ?: a.sources, note, optional)
+                        Step.Do(a, count ?: a.count, src ?: a.sources, note, optional, extra)
                     }
                     else -> error("step without passage, dua or action: $o")
                 }
