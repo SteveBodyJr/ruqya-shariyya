@@ -204,4 +204,16 @@
     <string name="about_disclaimer_title">Please note</string>
     <string name="about_disclaimer">Ruqya is worship and a means of asking Allah for healing; there is no promise of recovery within a fixed time. It does not replace medical care: if symptoms continue or are severe, see a doctor too. This app does not diagnose anything. If you find a mistake, please report it so it can be corrected.</string>
     <string name="version">Version %s</string>
+    <!-- Deen: the family of Islamic apps -->
+    <string name="deen_title">Deen</string>
+    <string name="deen_sub">Islamic apps by Digital Beaver</string>
+    <string name="deen_intro">These apps share one rule: only the Qur\'an and authentic Sunnah, text from known sources left unchanged, and no ads. New Deen apps will be added here and on the website.</string>
+    <string name="deen_apps">Apps</string>
+    <string name="deen_ruqya">Self-ruqya from the Qur\'an and authentic Sunnah: the evil eye, envy, and the morning and evening adhkar.</string>
+    <string name="deen_bukhari">Sahih al-Bukhari hadiths in Kiswahili with their meaning and lessons, and the whole of Sahih al-Bukhari in Arabic.</string>
+    <string name="deen_here">You are here</string>
+    <string name="deen_open">Open</string>
+    <string name="deen_get">Download</string>
+    <string name="deen_site">The Deen page on the website</string>
+    <string name="deen_site_sub">All Deen apps, new versions and how to install them</string>
 </resources>

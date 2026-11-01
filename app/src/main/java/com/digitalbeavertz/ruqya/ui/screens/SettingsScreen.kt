@@ -178,6 +178,8 @@ fun SettingsScreen(nav: NavHostController) {
             }
             Spacer(Modifier.height(16.dp))
             RCard(padding = 0.dp) {
+                Row2(stringResource(R.string.deen_title), stringResource(R.string.deen_sub)) { nav.navigate("deen") }
+                Divider()
                 Row2(stringResource(R.string.about_sources), stringResource(R.string.about_sources_short)) { nav.navigate("about") }
             }
         }

@@ -57,6 +57,7 @@ import androidx.navigation.navArgument
 import com.digitalbeavertz.ruqya.R
 import com.digitalbeavertz.ruqya.ui.components.prefs
 import com.digitalbeavertz.ruqya.ui.screens.AboutScreen
+import com.digitalbeavertz.ruqya.ui.screens.DeenScreen
 import com.digitalbeavertz.ruqya.ui.screens.ArticleScreen
 import com.digitalbeavertz.ruqya.ui.screens.CustomizeScreen
 import com.digitalbeavertz.ruqya.ui.screens.DuaScreen
@@ -112,6 +113,7 @@ fun AppRoot(startRoute: String?, onStartRouteUsed: () -> Unit) {
             composable("learn") { LearnScreen(nav) }
             composable("settings") { SettingsScreen(nav) }
             composable("about") { AboutScreen(nav) }
+            composable("deen") { DeenScreen(nav) }
             composable("run/{id}", arguments = listOf(navArgument("id") { type = NavType.StringType })) {
                 RunScreen(nav, it.arguments?.getString("id").orEmpty())
             }

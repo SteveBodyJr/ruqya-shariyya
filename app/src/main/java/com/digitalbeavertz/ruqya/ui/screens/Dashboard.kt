@@ -30,6 +30,7 @@ import androidx.compose.material.icons.automirrored.rounded.ArrowForward
 import androidx.compose.material.icons.automirrored.rounded.MenuBook
 import androidx.compose.material.icons.rounded.AutoAwesome
 import androidx.compose.material.icons.rounded.CheckCircle
+import androidx.compose.material.icons.rounded.Mosque
 import androidx.compose.material.icons.rounded.Settings
 import androidx.compose.material.icons.rounded.Tune
 import androidx.compose.material.icons.rounded.Visibility
@@ -163,6 +164,23 @@ fun HomeScreen(nav: NavHostController) {
                 }
             }
             GuidanceGrid(nav)
+        }
+
+        // Deen: the family of Islamic apps.
+        item {
+            Row(
+                Modifier.padding(horizontal = ScreenPadding).padding(top = 18.dp).fillMaxWidth().clip(RoundedCornerShape(18.dp))
+                    .background(c.header).clickable { nav.navigate("deen") }.padding(horizontal = 16.dp, vertical = 14.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Icon(Icons.Rounded.Mosque, null, tint = c.gold, modifier = Modifier.size(28.dp))
+                Spacer(Modifier.width(12.dp))
+                Column(Modifier.weight(1f)) {
+                    Text(stringResource(R.string.deen_title), style = MaterialTheme.typography.titleMedium, color = Color.White)
+                    Text(stringResource(R.string.deen_sub), style = MaterialTheme.typography.bodySmall, color = Color.White.copy(alpha = 0.75f))
+                }
+                Icon(Icons.AutoMirrored.Rounded.ArrowForward, null, tint = c.gold)
+            }
         }
 
         content.passages["isra_82"]?.let { verse ->

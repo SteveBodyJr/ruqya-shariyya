@@ -202,4 +202,16 @@
     <string name="about_disclaimer_title">Tafadhali zingatia</string>
     <string name="about_disclaimer">Ruqyah ni ibada na sababu ya kuomba uponyaji; hakuna ahadi ya kupona ndani ya muda maalumu. Haichukui nafasi ya matibabu: ikiwa dalili zinaendelea au ni kali, mwone daktari pia. Programu hii haitambui ugonjwa wowote. Ukiona kosa, tafadhali liripoti ili lirekebishwe.</string>
     <string name="version">Toleo %s</string>
+    <!-- Deen: programu za Kiislamu -->
+    <string name="deen_title">Deen</string>
+    <string name="deen_sub">Programu za Kiislamu za Digital Beaver</string>
+    <string name="deen_intro">Programu hizi zinafuata kanuni moja: Qur\'ani na Sunna sahihi tu, maandishi kutoka vyanzo vinavyojulikana bila kubadilishwa, na bila matangazo. Programu mpya za Deen zitaongezwa hapa na kwenye tovuti.</string>
+    <string name="deen_apps">Programu</string>
+    <string name="deen_ruqya">Ruqya ya kisheria kutoka Qur\'ani na Sunna sahihi: kujitibu, kijicho, husda, na adhkar za asubuhi na jioni.</string>
+    <string name="deen_bukhari">Hadithi za Sahih al-Bukhari kwa Kiswahili, pamoja na maana na mafunzo yake, na Sahih al-Bukhari yote kwa Kiarabu.</string>
+    <string name="deen_here">Uko hapa</string>
+    <string name="deen_open">Fungua</string>
+    <string name="deen_get">Pakua</string>
+    <string name="deen_site">Ukurasa wa Deen kwenye tovuti</string>
+    <string name="deen_site_sub">Programu zote za Deen, matoleo mapya na maelezo ya kupakua</string>
 </resources>

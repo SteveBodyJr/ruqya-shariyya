@@ -12,6 +12,11 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
 
+    <!-- To show "Open" for the other Deen apps when they are installed. -->
+    <queries>
+        <package android:name="com.digitalbeavertz.bukhari" />
+    </queries>
+
     <application
         android:name=".RuqyaApp"
         android:allowBackup="true"
