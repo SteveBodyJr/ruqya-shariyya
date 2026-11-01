@@ -43,12 +43,12 @@ import com.digitalbeavertz.ruqya.ui.components.ScreenPadding
 import com.digitalbeavertz.ruqya.ui.components.SectionTitle
 import com.digitalbeavertz.ruqya.ui.theme.RT
 
-/** The Deen family: Digital Beaver's Islamic apps. The same list is in Hadithi za Bukhari. */
+/** The Deen family: Digital Beaver's Islamic apps. The same list is in Sahih Al Bukhari. */
 data class DeenApp(val id: String, val pkg: String, val name: String, val tagline: Int, val icon: Int)
 
 val DEEN_APPS = listOf(
     DeenApp("ruqya", "com.digitalbeavertz.ruqya", "Ruqya Shariyya", R.string.deen_ruqya, R.drawable.deen_ruqya),
-    DeenApp("bukhari", "com.digitalbeavertz.bukhari", "Hadithi za Bukhari", R.string.deen_bukhari, R.drawable.deen_bukhari),
+    DeenApp("bukhari", "com.digitalbeavertz.bukhari", "Sahih Al Bukhari", R.string.deen_bukhari, R.drawable.deen_bukhari),
 )
 
 /** The Deen page on the Digital Beaver Apps site: every Islamic app, new ones as they come. */
